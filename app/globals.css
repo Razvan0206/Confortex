@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* Identity (CLAUDE.md, "Identity brief"): colors sampled from the client's logo.png.
+   brand = logo red (marks, large type on ink); brand-ui = darker red that passes 4.5:1 with white text
+   and as text on paper. One accent only. */
+@theme {
+  --color-ink: #14171c;
+  --color-ink-2: #1d2229;
+  --color-ink-line: #333b45;
+  --color-ink-muted: #b4bcc6;
+  --color-steel: #566070;
+  --color-line: #d9dee4;
+  --color-paper: #f3f5f7;
+  --color-brand: #ff0019;
+  --color-brand-ui: #d6001a;
+  --color-brand-deep: #b00015;
+  --font-sans: var(--font-geist), system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+h1, h2, h3 { text-wrap: balance; letter-spacing: -0.02em; line-height: 1.08; font-weight: 650; }
+p, li { text-wrap: pretty; }
+.num { font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+a, button, summary, input, select, textarea { touch-action: manipulation; }
+
+:focus-visible { outline: 3px solid var(--color-brand-ui); outline-offset: 3px; }
+.on-ink :focus-visible { outline-color: #fff; }
+
+@layer components {
+  .wrap { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .wrap { padding-inline: 2rem; } }
+  .band { padding-block: 4rem; }
+  @media (min-width: 768px) { .band { padding-block: 6rem; } }
+
+  /* surfaces: header, hero, scale, quote band and footer are ink because the supplied logo is white */
+  .on-ink { background: var(--color-ink); color: #fff; }
+  .on-ink .muted { color: var(--color-ink-muted); }
+  .on-white .muted { color: var(--color-steel); }
+  .on-white { background: #fff; }
+
+  /* one corner language: sharp (2px on controls, 0 elsewhere); the hexagon is the only signature shape */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+    min-height: 3rem; padding: 0.625rem 1.5rem; border-radius: 2px;
+    font-weight: 600; line-height: 1.2; white-space: nowrap; text-decoration: none;
+    transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+  }
+  .btn:active { transform: translateY(1px) scale(0.985); }
+  .btn-red { background: var(--color-brand-ui); color: #fff; }
+  .btn-red:hover { background: var(--color-brand-deep); }
+  .btn-line { border: 1.5px solid currentColor; }
+  .btn-line:hover { background: color-mix(in srgb, currentColor 10%, transparent); }
+  .btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+  .btn[disabled]:active { transform: none; }
+
+  .link { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); transition: text-decoration-color 160ms; }
+  .link:hover { text-decoration-color: currentColor; }
+
+  .hex { clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+  .hex-badge {
+    display: inline-grid; place-items: center; flex: none; width: 3.25rem; height: 3.75rem;
+    background: var(--color-brand-ui); color: #fff; font-size: 0.95rem; font-weight: 650; font-variant-numeric: tabular-nums;
+  }
+
+  /* note/list item with a hexagon bullet (replaces thick side borders) */
+  .note { display: flex; gap: 0.75rem; align-items: baseline; background: #fff; padding: 0.75rem 1rem; }
+  .note::before { content: ""; flex: none; width: 0.6rem; height: 0.7rem; background: var(--color-brand); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); transform: translateY(0.05em); }
+
+  .field { display: grid; gap: 0.375rem; align-content: start; }
+  .field label { font-weight: 600; font-size: 0.95rem; }
+  .field input, .field select, .field textarea {
+    width: 100%; min-height: 3rem; padding: 0.625rem 0.875rem; border-radius: 2px;
+    border: 1.5px solid #8a94a3; background: #fff; color: var(--color-ink); font: inherit; font-size: 1rem;
+  }
+  .field textarea { min-height: 7.5rem; resize: vertical; }
+  .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline-offset: 0; border-color: var(--color-ink); }
+  .field small { color: var(--color-steel); }
+}
+
+/* capacity scale (log axis, drawn from real numbers in content/site.ts) */
+.axis { position: relative; height: 2.5rem; border-bottom: 2px solid var(--color-ink-line); }
+.axis .bar { position: absolute; bottom: -2px; height: 1.25rem; background: var(--color-brand); transform-origin: left; }
+.axis .tick { position: absolute; top: 100%; width: 1px; height: 0.5rem; background: var(--color-ink-line); }
+.axis .tick span { position: absolute; top: 0.6rem; left: 0; transform: translateX(-50%); font-size: 0.75rem; color: var(--color-ink-muted); white-space: nowrap; }
+.axis .tick:first-child span { transform: translateX(-10%); }
+.axis .tick:last-child span { transform: translateX(-90%); }
+
+/* ---------- motion (CSS only; hero rises once, sections reveal on scroll) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .rise { animation: rise 640ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 90ms); }
+
+  @supports (animation-timeline: view()) {
+    .reveal { animation: rise linear backwards; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+    .axis .bar { animation: grow linear backwards; animation-timeline: view(); animation-range: entry 10% entry 70%; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* mobile menu dialog */
+dialog.menu { inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0; background: var(--color-ink); color: #fff; }
+dialog.menu::backdrop { background: rgb(0 0 0 / 0.6); }
+@media (prefers-reduced-motion: no-preference) {
+  dialog.menu[open] { animation: rise 260ms var(--ease-out); }
+}

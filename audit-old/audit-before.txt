@@ -1,0 +1,84 @@
+== MOBILE (4x CPU, ~1.6 Mbps, 150 ms), returning visitor
+load event: 5712 ms | LCP: 5732 ms (LI.) | CLS: 1.006 | long tasks: 5, TBT~612 ms
+transferred: 1001 KB in 52 requests; by type: {
+  Document: '7 KB',
+  Stylesheet: '71 KB',
+  Script: '194 KB',
+  Image: '601 KB',
+  Font: '125 KB',
+  XHR: '0 KB',
+  Other: '2 KB'
+}
+largest: 187KB Image /continut/uploads/2014/03/slide-1.jpg
+         136KB Image /continut/uploads/2014/03/slide31.jpg
+         123KB Image /continut/uploads/2014/03/slide2.jpg
+         102KB Script /maps/api/js?key=
+
+== A11Y / STRUCTURE
+{
+ "lang": "en-US",
+ "title": "Confortex Iasi - Frig Industrial, Tehnica Frigului Iasi",
+ "metaDesc": true,
+ "themeColor": false,
+ "og": true,
+ "jsonLd": true,
+ "canonical": true,
+ "skipLink": false,
+ "landmarks": {
+  "header": 0,
+  "nav": 0,
+  "main": 0,
+  "footer": 0
+ },
+ "headings": [
+  "H1:Lider zonal in servicii spec",
+  "H1:Centrale de tratare a aerulu",
+  "H1:Agregate de tratare a aerulu",
+  "H1:De peste 20 de ani lideri in",
+  "H4:Confortex este principalul r",
+  "H4:Consultanta",
+  "H4:Montaje",
+  "H4:Service",
+  "H4:Instruire",
+  "H1:Produsele noastre",
+  "H2:Comerciale",
+  "H2:Industriale",
+  "H2:Frig adanc",
+  "H2:Despre noi"
+ ],
+ "imgNoAlt": 0,
+ "imgEmptyAlt": 5,
+ "buttonsNoName": 11,
+ "videoAria": [],
+ "htmlScrollPad": "auto",
+ "sectionScrollMargin": [],
+ "viewportMeta": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+ "textWrapBalance": "wrap",
+ "touchAction": "auto"
+}
+focus order (first 12): A[] outline=false bg=none
+   A[Home] outline=false bg=rgba(0, 0, 0, 0.5)
+   A[Despre noi] outline=false bg=rgba(0, 0, 0, 0.5)
+   A[Produse] outline=false bg=rgba(0, 0, 0, 0.5)
+   A[Servicii] outline=false bg=rgba(0, 0, 0, 0.5)
+   A[Contact] outline=false bg=rgba(0, 0, 0, 0.5)
+   A[Vezi produsele noastre] outline=false bg=rgb(128, 128, 128)
+   A[1] outline=false bg=rgb(241, 29, 29)
+   A[2] outline=false bg=rgb(255, 255, 255)
+   A[3] outline=false bg=rgb(255, 255, 255)
+   A[1] outline=false bg=rgb(241, 29, 29)
+   A[2] outline=false bg=rgb(255, 255, 255)
+
+== CONTRAST (text over solid backgrounds), mobile
+2.97:1 (need 4.5) "1" rgb(51, 51, 51)
+2.55:1 (need 3) "Produsele noastre" rgb(51, 51, 51)
+2.55:1 (need 4.5) "Comerciale" rgb(51, 51, 51)
+2.55:1 (need 4.5) "Industriale" rgb(51, 51, 51)
+2.55:1 (need 4.5) "Frig adanc" rgb(51, 51, 51)
+== TOUCH TARGETS < 44px: 
+  110x10
+  210x10
+  310x10
+  50x30
+
+== NO-JS RENDER: {"hiddenTextBlocks":0,"totalTextBlocks":23,"h1Translated":false,"introOverlayDisplayed":false}

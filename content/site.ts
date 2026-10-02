@@ -1,0 +1,466 @@
+// All client content lives here. Components hold no client text.
+// Source of every fact: old confortex.ro (audit-old/content-old.md, mirror in scrape/). Items tagged
+// `claim: true` are the company's own statements still to be confirmed with documents.
+// Placeholders are visible on the page ("Aici va veni ...", "TODO client").
+
+export type Img = { src: string; w: number; h: number; alt: string };
+
+const img = (name: string, w: number, h: number, alt: string, ext = "jpg"): Img => ({ src: `/img/${name}.${ext}`, w, h, alt });
+
+export const site = {
+  name: "Confortex",
+  legalName: "CONFORTEX SRL",
+  cui: "1989262",
+  regCom: null as string | null, // TODO client: Reg. Com. (J..)
+  founded: 1992, // client claim (old "Despre noi")
+  street: "Calea Chișinăului 29",
+  zip: "700177",
+  city: "Iași",
+  phone: "+40 232 231 900",
+  phoneHref: "tel:+40232231900",
+  fax: "+40 332 800 701 / 702",
+  email: "confortex@confortex.ro",
+  hours: null as string | null, // TODO client: program
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Calea+Chi%C8%99in%C4%83ului+29+Ia%C8%99i",
+  facebook: "https://www.facebook.com/pages/SC-Confortex-SRL/644066379054477", // from old site, to verify
+  nav: [
+    { label: "Acasă", href: "/" },
+    { label: "Despre noi", href: "/despre-confortex" },
+    { label: "Produse", href: "/produse" },
+    { label: "Servicii", href: "/servicii-confortex" },
+    { label: "Proiecte", href: "/proiecte" },
+    { label: "Contact", href: "/contact" },
+  ],
+  cta: { label: "Cere ofertă", href: "/contact#oferta" },
+} as const;
+
+export const hero = {
+  title: "Frig industrial și HVAC, de la proiect la service",
+  text: "Livrare, montaj, punere în funcțiune și mentenanță pentru frig industrial, comercial și climatizare, în Iași și în regiune.",
+  image: img("chillere-york", 900, 675, "Trei chillere YORK montate lângă rezervoare inox, în curtea unui combinat"),
+  caption: "Trei chillere YORK de 537 kW fiecare, cu vas intermediar de 8 m³",
+};
+
+export const proof = [
+  { strong: "Din 1992", text: "pe piața frigului industrial" },
+  { strong: "Importator direct", text: "York, Güntner și Konvekta" },
+  { strong: "Camere frigorifice", text: "de la 10 la 2.000 m³" },
+  { strong: "Depozite industriale", text: "de 11.000 m³" },
+  { strong: "Centrale de tratare a aerului", text: "până la 60.000 m³/h" },
+] as const;
+
+// Range bars: drawn on a log scale between lo and hi of each axis.
+export const scale = {
+  intro: "Numerele de mai jos sunt lucrări declarate de Confortex pe site-ul vechi; se confirmă cu documente înainte de lansare.",
+  axes: [
+    {
+      unit: "m³",
+      title: "Volum de spațiu răcit",
+      lo: 10,
+      hi: 100000,
+      rows: [
+        { label: "Camere de refrigerare și congelare", from: 10, to: 2000, text: "10 – 2.000 m³" },
+        { label: "Depozite industriale", from: 11000, to: 11000, text: "11.000 m³" },
+      ],
+    },
+    {
+      unit: "kW",
+      title: "Putere frigorifică",
+      lo: 1,
+      hi: 10000,
+      rows: [{ label: "Chillere (compresoare scroll și cu șurub)", from: 8, to: 1000, text: "8 – 1.000 kW" }],
+    },
+    {
+      unit: "m³/h",
+      title: "Debit de aer",
+      lo: 1000,
+      hi: 100000,
+      rows: [{ label: "Centrale de tratare a aerului (AHU)", from: 2000, to: 60000, text: "2.000 – 60.000 m³/h" }],
+    },
+  ],
+  deep: { label: "Frig adânc", text: "până la −80 °C", note: "Criostate până la −40 °C și ultracriostate de la −40 la −70 °C (declarat pe site-ul vechi)." },
+} as const;
+
+export const domains = [
+  {
+    title: "Industria alimentară",
+    text: "Abatoare, fabrici de lactate, preparate din carne, vinuri, procesare de pește și depozite de legume și fructe.",
+    image: img("camera-carne", 900, 666, "Cameră frigorifică cu rafturi pline de carne"),
+  },
+  {
+    title: "Depozite și logistică la rece",
+    text: "Camere și depozite frigorifice din panouri sandwich, tuneluri de congelare, de la 10 la 11.000 m³.",
+    image: img("depozit-navete", 900, 666, "Depozit frigorific cu navete stivuite"),
+  },
+  {
+    title: "Comerț și HoReCa",
+    text: "Mobilier frigorific, centrale pentru lanțuri de vitrine și rooftop-uri pentru magazine, restaurante și pensiuni.",
+    image: img("rooftop-york", 900, 675, "Rooftop YORK montat pe acoperișul unei clădiri"),
+  },
+  {
+    title: "Clădiri și hale (HVAC)",
+    text: "Chillere, centrale de tratare a aerului și rooftop-uri pentru fabrici, spitale și clădiri de birouri.",
+    image: img("ahu-york-mare", 900, 675, "Centrală de tratare a aerului YORK montată pe o platformă metalică"),
+  },
+] as const;
+
+export const services = [
+  {
+    slug: "consultanta",
+    title: "Consultanță și proiectare",
+    text: "Consultanță și constatări tehnice de specialitate pentru frig industrial și comercial, frig adânc, HVAC, aer condiționat și aer comprimat. Proiectăm și executăm camere de refrigerare și congelare.",
+  },
+  {
+    slug: "montaj",
+    title: "Montaj și punere în funcțiune",
+    text: "Livrare, montare și punere în funcțiune: camere din panouri sandwich, uși frigorifice, burdufuri izotermice, încălzire de pardoseală sub izolația camerelor, chillere, rooftop-uri, AHU și agregate frigorifice pe autoutilitare izoterme.",
+  },
+  {
+    slug: "service",
+    title: "Service și mentenanță",
+    text: "Service în garanție și post-garanție, pe bază de contract sau comandă fermă, pentru orice instalație frigorifică comercială sau industrială, indiferent de marcă. Reparații la chillere, rooftop-uri și AHU. Service A/C auto.",
+  },
+  {
+    slug: "instruire",
+    title: "Instruire",
+    text: "La punerea în funcțiune, beneficiarul primește un set complet de instrucțiuni de lucru, cu traducere în limba română, și instruirea personalului de exploatare.",
+  },
+] as const;
+
+export const extraServices = [
+  "Vânzare en-gros și en-detail de freoni, piese de schimb, echipamente și subansamble specifice tehnicii frigului.",
+  "Recuperare și reciclare freoni, ca centru zonal (afirmație de pe site-ul vechi, de confirmat cu documentele de autorizare).",
+  "Detectare profesională de scurgeri cu ultrasunete și detector de halogen.",
+] as const;
+
+export type Product = {
+  slug: string;
+  title: string;
+  group: "refrigerare" | "depozite" | "hvac" | "frig-adanc";
+  lead: string;
+  points?: readonly string[];
+  brand?: string;
+  image: Img;
+  docs?: readonly { label: string; file: string }[];
+  specs?: readonly (readonly [string, string])[];
+  note?: string;
+};
+
+export const productGroups = [
+  { id: "refrigerare", title: "Refrigerare industrială și comercială", text: "Agregate, compresoare, centrale frigorifice, vaporizatoare, mobilier frigorific și piese." },
+  { id: "depozite", title: "Camere și depozite frigorifice", text: "Panouri sandwich demontabile sau semidemontabile, personalizate pe aplicație." },
+  { id: "hvac", title: "Climatizare și HVAC", text: "Chillere, rooftop-uri, centrale de tratare a aerului, aer condiționat și filtre." },
+  { id: "frig-adanc", title: "Frig adânc", text: "Criostate și ultracriostate pentru laboratoare, industria farmaceutică și medicală." },
+] as const;
+
+export const products: readonly Product[] = [
+  {
+    slug: "agregate-si-compresoare-frigorifice-industriale",
+    title: "Agregate și compresoare frigorifice industriale",
+    group: "refrigerare",
+    lead: "Pentru aplicațiile industriale care cer instalații frigorifice profesionale recomandăm agregate și compresoare Bitzer, Copeland Scroll și Frascold.",
+    brand: "Bitzer · Copeland · Frascold",
+    image: img("p-agregate-industriale", 853, 674, "Agregat frigorific cu compresor semiermetic verde"),
+    docs: [
+      { label: "Bitzer, agregate", file: "Bitzer-agregate.pdf" },
+      { label: "Bitzer, compresoare", file: "Bitzer-compresoare.pdf" },
+      { label: "Copeland Scroll, compresoare", file: "Copeland-Scroll-Compresoare.pdf" },
+      { label: "Frascold", file: "Frascold.pdf" },
+    ],
+  },
+  {
+    slug: "agregate-si-compresoare-frigorifice-comerciale",
+    title: "Agregate și compresoare frigorifice comerciale",
+    group: "refrigerare",
+    lead: "Pentru aplicațiile comerciale folosim agregate și compresoare Tecumseh (L'Unité Hermétique). Pentru puteri frigorifice mai mari recomandăm Bitzer, Copeland și Frascold.",
+    brand: "Tecumseh · Bitzer · Copeland · Frascold",
+    image: img("p-agregate-comerciale", 468, 250, "Agregat frigorific comercial cu doi ventilatori"),
+    docs: [{ label: "Catalog general Tecumseh", file: "TECUMSEH-2011-GENERAL-CATALOGUE.pdf" }],
+  },
+  {
+    slug: "centrale-frigorifice-cu-compresoare-capsulate",
+    title: "Centrale frigorifice",
+    group: "refrigerare",
+    lead: "Centralele pentru lanțuri de vitrine cer flexibilitate, costuri mici de exploatare și consum redus de energie. Se execută cu compresoare capsulate Tecumseh sau Copeland Scroll.",
+    brand: "SCM Frigo · Rivacold · Starcold · York",
+    image: img("p-centrale", 468, 250, "Centrală frigorifică SCM Frigo"),
+    docs: [
+      { label: "SCM Frigo UMA", file: "SCM_FRIGO_UMA.pdf" },
+      { label: "SCM Frigo UMA MT", file: "UMA-MT.pdf" },
+      { label: "Date tehnice UMA", file: "TabelleUMA.pdf" },
+      { label: "Date tehnice UMCA", file: "TabelleUMCA.pdf" },
+      { label: "Starcold", file: "starcold.pdf" },
+    ],
+  },
+  {
+    slug: "vaporizatoare-si-condensatoare",
+    title: "Vaporizatoare și condensatoare",
+    group: "refrigerare",
+    lead: "Vaporizatoarele se aleg după regimul de temperaturi, produsul răcit, izolația camerei, rata zilnică de încărcare și numărul de deschideri ale ușii. Sunt compacte, au degivrare și acoperă o plajă largă de capacități.",
+    points: ["Păstrează proaspete și congelate produsele alimentare", "Distanțe diferite între tole, pentru aplicații diferite", "Rezistențe de degivrare pentru temperaturi foarte joase", "Ventilatoare în aspirație, ca să nu se formeze condens"],
+    brand: "Güntner · Lu-Ve",
+    image: img("p-vaporizatoare", 468, 250, "Vaporizator frigorific cu trei ventilatoare"),
+    docs: [
+      { label: "Catalog Güntner", file: "Product_Brochure_ENG_2010.pdf" },
+      { label: "Suflante Lu-Ve", file: "suflante-Lu-Ve.pdf" },
+      { label: "Suflante Eco", file: "Suflante-Eco.pdf" },
+    ],
+  },
+  {
+    slug: "agregate-frigorifice-konvekta",
+    specs: [["Refrigerare", "FK 1500 până la FK 6050"], ["Congelare", "TK 2920 până la TK 8050"], ["Montaj", "autoutilitare izoterme și camioane"]],
+    title: "Agregate frigorifice Konvekta pentru autoutilitare",
+    group: "refrigerare",
+    lead: "Konvekta (Germania) produce echipamente mobile de refrigerare și aer condiționat pentru vehicule comerciale care transportă produse perisabile. Confortex este importator direct.",
+    points: ["Refrigerare: modelele FK 1500 până la FK 6050", "Congelare: modelele TK 2920 până la TK 8050", "Izolare termică și montaj pe autoutilitare și camioane"],
+    brand: "Konvekta",
+    image: img("p-konvekta", 468, 250, "Agregat frigorific Konvekta montat pe plafon"),
+    docs: [
+      { label: "FK 1500, 2000, 2500", file: "Agregate_refrigerare_marfa_FK1500_2000_2500.pdf" },
+      { label: "FK 2650", file: "Agregate_refrigerare_marfa_FK2650.pdf" },
+      { label: "FK 3050", file: "Agregate_refrigerare_alimente_FK3050.pdf" },
+      { label: "TK 2920, 4020", file: "Agregate_congelare_marfa_TK2920_4020.pdf" },
+      { label: "TK 3650", file: "Agregate_congelare_marfa_TK3650.pdf" },
+    ],
+  },
+  {
+    slug: "mobilier-frigorific",
+    title: "Mobilier frigorific",
+    group: "refrigerare",
+    lead: "Soluții de expunere a mărfurilor în supermarketuri, magazine alimentare, carmangerii și centre comerciale: lanțuri de vitrine, vitrine orizontale și alte tipuri, adaptate spațiului și cerințelor tehnice.",
+    image: img("p-mobilier", 450, 229, "Lanț de vitrine frigorifice într-un supermarket"),
+    note: "Descrierea completă a gamei se preia din fișele producătorului după confirmarea clientului.",
+  },
+  {
+    slug: "maja-masini-pentru-fulgi-de-ingheata",
+    title: "Mașini pentru fulgi de gheață Maja",
+    group: "refrigerare",
+    lead: "Importator direct Maja. Mașinile produc gheață uscată, cu densitate mică, temperatura de −7 °C, igienică (dezinfecție UV) și folosesc 100% din apă.",
+    points: ["Hoteluri, restaurante și firme de catering", "Industria de panificație", "Oriunde alimentele trebuie răcite sau înghețate", "Montaj și utilizare simple, fără costuri suplimentare de operare"],
+    brand: "Maja",
+    image: img("p-fulgi", 468, 250, "Mașină Maja pentru fulgi de gheață"),
+    docs: [{ label: "Brosură Maja (EN)", file: "MAJA-Ice-Machines_9_2014_EN_23762.pdf" }],
+  },
+  {
+    slug: "piese-de-schimb",
+    title: "Piese de schimb specifice tehnicii frigului",
+    group: "refrigerare",
+    lead: "Componente și piese de schimb pentru echipamente frigorifice, livrate en-gros și en-detail.",
+    points: [
+      "Compresoare, vaporizatoare și condensatoare frigorifice",
+      "Automatizare Danfoss și Castel (ventile, vizori, filtre, electroventile, presostate)",
+      "Uleiuri frigorifice sintetice și minerale",
+      "Agenți frigorifici (freoni) în butelii returnabile: R404A, R422D, R417A, R422A, R134a, R407C, R410A, R507B",
+      "Aliaje de lipire, ventilatoare, tuburi antivibrație",
+      "Scule pentru frigotehniști: stații de încărcare, manometre și pompe vacuum REFCO",
+    ],
+    image: img("p-piese", 468, 250, "Componente de automatizare pentru instalații frigorifice"),
+  },
+  {
+    slug: "depozite-din-panouri-sandwich",
+    specs: [["Camere de refrigerare și congelare", "10 – 2.000 m³"], ["Depozite industriale", "11.000 m³"], ["Panouri", "sandwich cu spumă poliuretanică"], ["Execuție", "demontabilă sau semidemontabilă"]],
+    title: "Depozite din panouri sandwich",
+    group: "depozite",
+    lead: "Camere și depozite frigorifice din panouri sandwich cu spumă poliuretanică, demontabile sau semidemontabile. Pentru fiecare aplicație se elaborează o ofertă personalizată.",
+    points: ["Camere de refrigerare și congelare de la 10 m³ la 1.600 – 2.000 m³", "Depozite industriale de 11.000 m³", "Tuneluri de congelare", "Uși, burdufuri izotermice și încălzire de pardoseală"],
+    brand: "Isopan",
+    image: img("p-depozite", 468, 250, "Interiorul unei camere frigorifice din panouri albe"),
+    docs: [{ label: "Catalog Isopan", file: "Catalog-General-RO_REV_08.pdf" }],
+  },
+  {
+    slug: "chillere",
+    specs: [["Putere frigorifică", "8 – 1.000 kW"], ["Agent frigorific, compresor scroll", "R410A"], ["Agent frigorific, compresor cu șurub", "R134a"], ["Variantă", "cu sau fără kit hidraulic"]],
+    title: "Chillere YORK",
+    group: "hvac",
+    lead: "Chillerele YORK se livrează standard cu agregat de răcire cu freon R410A (compresor scroll) sau R134a (compresor cu șurub), cu sau fără kit hidraulic. Puteri de la 8 la 1.000 kW.",
+    points: ["Suporți antivibrații", "LAK (Low Ambient Kit) pentru funcționare pe frig", "Preechipare BMS"],
+    brand: "York (Johnson Controls)",
+    image: img("p-chillere", 468, 250, "Chiller cu condensare pe aer"),
+    docs: [{ label: "Catalog YORK HVAC", file: "hvac-catalogue-2014.pdf" }],
+  },
+  {
+    slug: "rooftop-uri",
+    specs: [["Putere de răcire, gama mică", "până la 40 kW"], ["Putere de răcire, gama mare", "45 – 84 kW"], ["Încălzire", "cu gaz metan"], ["Control", "controller DPC-1 și senzori"]],
+    title: "Rooftop-uri YORK",
+    group: "hvac",
+    lead: "Agregate de tratare a aerului compacte, cu agregat frigorific inclus și încălzire cu gaz metan. Controlează calitatea, temperatura, umiditatea și viteza aerului cu un controller specializat și senzori. Importator direct.",
+    points: ["Rooftop-uri cu puteri de răcire până la 40 kW", "Rooftop-uri cu puteri de răcire de la 45 la 84 kW", "Senzori de temperatură, entalpie, calitate a aerului și fum"],
+    brand: "York (Johnson Controls)",
+    image: img("p-rooftop", 468, 250, "Rooftop YORK"),
+    docs: [
+      { label: "Rooftop până la 40 kW", file: "EN-ACTIVA-017-040-2011.pdf" },
+      { label: "Rooftop 45 – 84 kW", file: "EN-ACTIVA-ARG-045-090-2011.pdf" },
+    ],
+  },
+  {
+    slug: "centrale-de-tratare-a-aerului",
+    specs: [["Debit de aer livrat", "2.000 – 60.000 m³/h"], ["Producător", "York (Johnson Controls)"]],
+    title: "Centrale de tratare a aerului (AHU)",
+    group: "hvac",
+    lead: "Centrale de tratare a aerului YORK pentru ventilație, încălzire și climatizare în hale și clădiri. Debitele livrate merg de la 2.000 la 60.000 m³/h.",
+    brand: "York (Johnson Controls)",
+    image: img("p-cta", 468, 250, "Centrală de tratare a aerului pe platformă"),
+    note: "Aici va veni descrierea tehnică, din fișele YORK, după confirmarea clientului.",
+  },
+  {
+    slug: "echipamente-de-climatizare-si-ventilatie",
+    title: "Echipamente de climatizare și ventilație",
+    group: "hvac",
+    lead: "Importator direct. Pentru fiecare aplicație se elaborează o ofertă personalizată: rooftop-uri, centrale de tratare a aerului și controllere.",
+    image: img("p-climatizare", 468, 250, "Conducte de ventilație sub un tavan fals"),
+    docs: [{ label: "Controller DPC-1 (manual în română)", file: "Controller-DPC-1-manual-romana.pdf" }],
+  },
+  {
+    slug: "aparate-de-aer-conditionat",
+    title: "Aparate de aer condiționat",
+    group: "hvac",
+    lead: "Aparate pentru spații rezidențiale și comerciale: perete, casetă, coloană. Pentru camere de servere: Fujitsu și soluțiile YORK cu funcționare 24 de ore pe zi.",
+    brand: "Fujitsu · White Westinghouse · Inventor · York",
+    image: img("p-aer-conditionat", 468, 250, "Aparat de aer condiționat Fujitsu de perete cu unitate exterioară"),
+    docs: [
+      { label: "Fujitsu, gama comercială", file: "Fujitsu-gama-comerciala.pdf" },
+      { label: "Fujitsu, camere de servere", file: "Fujitsu-Camera-Servere.pdf" },
+      { label: "Catalog aparate comerciale", file: "Catalog-LCAC-B2C_low_res.pdf" },
+      { label: "Catalog aparate rezidențiale", file: "Catalog-RAC-B2C_low_res.pdf" },
+    ],
+  },
+  {
+    slug: "filtre-aer",
+    title: "Filtre de aer",
+    group: "hvac",
+    lead: "Elemente, sisteme și accesorii de filtrare pentru medii industriale și rezidențiale și pentru aplicații speciale: săli de operație, industria farmaceutică, microelectronică.",
+    points: ["Camere cu grad ridicat de sterilitate: filtrare HEPA H10 – H13", "Camere cu grad superior de sterilitate: filtrare HEPA H14"],
+    image: img("p-filtre", 468, 250, "Filtru de aer HEPA ținut în mână"),
+    docs: [
+      { label: "Catalog general filtre", file: "GENERALFILTER_catalog_general.pdf" },
+      { label: "HEPA H10 – H13", file: "HEPAFIL_MP10_13_14.pdf" },
+      { label: "HEPA H14", file: "HEPAFIL_HEA_HMA.pdf" },
+    ],
+  },
+  {
+    slug: "frig-adanc",
+    specs: [["Criostate", "până la −40 °C"], ["Ultracriostate", "de la −40 la −70 °C"]],
+    title: "Frig adânc: criostate și ultracriostate",
+    group: "frig-adanc",
+    lead: "Instalații pentru producerea și menținerea unei temperaturi scăzute constante, pentru industria farmaceutică și medicală, clinici și aplicații industriale complexe.",
+    points: ["Criostate: temperaturi până la −40 °C", "Ultracriostate: de la −40 la −70 °C", "Confortex declară că este singura companie din România care produce criostate și ultracriostate (de confirmat)"],
+    image: img("p-criostate", 468, 250, "Criostat de laborator"),
+    docs: [
+      { label: "Criostate", file: "Criostate.pdf" },
+      { label: "Ultracriostate", file: "Ultracriostate.pdf" },
+    ],
+  },
+];
+
+export const brands = {
+  direct: ["York (Johnson Controls)", "Güntner", "Konvekta", "Maja"],
+  more: ["Bitzer", "Copeland", "Frascold", "Tecumseh (L'Unité Hermétique)", "SCM Frigo", "Rivacold", "Fujitsu", "White Westinghouse", "Inventor", "Lu-Ve", "Isopan", "Atlas Copco", "Ingersoll-Rand", "Danfoss", "Castel", "Refco", "Thermoscreen", "Du Pont"],
+  note: "Numele mărcilor apar ca text. Logo-urile se pun doar cu permisiunea scrisă a proprietarilor.",
+} as const;
+
+export type Ref = { client: string; what: string; spec?: string; place?: string };
+
+export const referenceGroups = [
+  {
+    id: "refrigerare",
+    title: "Refrigerare",
+    intro: "Centrale frigorifice de congelare, refrigerare și refrigerare înaltă (York, Rivacold, SCM Frigo, Güntner), agregate independente Bitzer și Copeland.",
+    items: [
+      { client: "ASTRA Trifești", what: "Înființare depozite frigorifice pentru legume și fructe proaspete" },
+      { client: "M&R", what: "Modernizare fabrică de preparate din carne" },
+      { client: "FRIGOSTAR SRL", what: "Înființare depozite frigorifice închiriate terților" },
+      { client: "ROM TRADING COMPANY", what: "Înființare abator de pui: instalații frigorifice în sistem pump cu freon R507B, panouri, uși și burdufuri izotermice", spec: "4.000 pui/h" },
+      { client: "AVA STAR SRL", what: "Înființare abator de porci și vită: instalații frigorifice și ventilație" },
+      { client: "CNUD EFCO", what: "Hală nouă: sistem de încălzire industrială cu tuburi radiante Gas Industrie (Franța)" },
+    ],
+  },
+  {
+    id: "hvac",
+    title: "Ventilație, încălzire și climatizare (HVAC)",
+    intro: "Centrale de tratare a aerului și rooftop-uri YORK, livrate și puse în funcțiune pentru industrie, comerț și HoReCa.",
+    items: [
+      { client: "COCA COLA Chișinău", what: "Centrală de tratare a aerului YORK", spec: "60.000 m³/h" },
+      { client: "COTNARI S.A.", what: "Combinat de producere și îmbuteliere vinuri: CTA YORK și rooftop", spec: "29.000 + 6.000 m³/h" },
+      { client: "BMT AEROSPACE", what: "Rooftop-uri mari YORK, 3 bucăți", spec: "3 × 25.000 m³/h" },
+      { client: "AVA STAR, Liteni (Suceava)", what: "CTA YORK, introducere și evacuare", spec: "17.000 / 20.000 m³/h" },
+      { client: "ROM TRADING COMPANY, Iași", what: "CTA YORK, introducere și evacuare", spec: "18.000 / 20.000 m³/h" },
+      { client: "PROMILCH SRL", what: "Fabrică de produse lactate: CTA YORK", spec: "3.000 m³/h" },
+      { client: "INDUSTRIAL MARIAN, Huși", what: "Fabrică de produse lactate: CTA YORK", spec: "2.000 m³/h" },
+      { client: "PESCOM, Vaslui", what: "Sală de procesare pește: rooftop YORK D5IG 240" },
+      { client: "Restaurant Marinaky, Iași", what: "Rooftop YORK D5IG 120", spec: "8.600 m³/h" },
+      { client: "Pensiunea Fines, Pașcani", what: "Rooftop YORK D5IG 120", spec: "8.600 m³/h" },
+      { client: "Restaurant Porumbelul Alb, Vaslui", what: "Rooftop YORK D5IG 180", spec: "8.600 m³/h" },
+      { client: "N&F Belvedere, Iași", what: "Restaurant: rooftop YORK D5IG 150" },
+    ],
+  },
+  {
+    id: "chillere",
+    title: "Chillere",
+    intro: "Chillere YORK de la 26 la 537 kW, pentru industrie, spitale și clădiri comerciale.",
+    items: [
+      { client: "METEX SA, Roman", what: "Pavilion Nicolina, Iași: chiller YORK YAES 0575", spec: "537 kW" },
+      { client: "COCA COLA, Iași și Chișinău", what: "Chillere YORK YAES 0525, YLAE 330 SE, YCAM 360, YCAM 120", spec: "495 / 300 / 290 / 110 kW" },
+      { client: "COTNARI SA, Iași", what: "3 × YORK YAES 0575 și 2 × YCCD 170", spec: "537 kW și 122 kW" },
+      { client: "3P FRIGOGLASS, Iași", what: "Chillere YORK YCSA 80 TP, YCCD 090, YLCA 150, YCSE 100 SB (cu turn de răcire a apei)", spec: "80 / 63 / 150 / 100 kW" },
+      { client: "ROM TRADING COMPANY, Iași", what: "2 × YORK YCSA 80 TP și YCAC 30 PACK", spec: "80 și 30 kW" },
+      { client: "Casa Auto și Tester, Iași", what: "Chillere YORK YLCA 120 și YLCA 150", spec: "120 și 150 kW" },
+      { client: "VINICOM, Copou (Iași)", what: "Chiller YORK YCSA 100 TP", spec: "100 kW" },
+      { client: "CNUD EFCO, Iași", what: "Chiller YORK YLCA 80", spec: "80 kW" },
+      { client: "EMARICOM, Tg. Neamț", what: "Chiller YORK YCSA 50 TP", spec: "50 kW" },
+      { client: "Spitalul CFR, Iași", what: "Chillere YORK YCSA 26 TP și YCSA 36 TP", spec: "26 și 36 kW" },
+      { client: "COM MECANOFUC, Iași", what: "Chiller YORK YCSA 26 TP", spec: "26 kW" },
+    ],
+  },
+  {
+    id: "aer-comprimat",
+    title: "Compresoare cu șurub și uscătoare de aer",
+    intro: "Aer comprimat pentru industrie: compresoare cu șurub și uscătoare.",
+    items: [
+      { client: "3P FRIGOGLASS", what: "Compresor cu șurub și uscător de aer Atlas Copco" },
+      { client: "ROM TRADING COMPANY", what: "Stație de incubație, Războieni (Iași): compresor cu șurub și uscător Ingersoll-Rand" },
+      { client: "ROM TRADING COMPANY", what: "Abator nou, Podu Iloaiei (Iași): 2 compresoare cu șurub Ingersoll-Rand" },
+    ],
+  },
+] as const satisfies readonly { id: string; title: string; intro: string; items: readonly Ref[] }[];
+
+export const otherClients = [
+  "3P Frigoglass", "AvaStar (Suceava)", "Avi Top", "Cotnari", "Frigostar (Iași)", "Grup XL Company", "Incerc", "Industrial Marian (Huși)", "Kosarom (Pașcani)", "Laricris (Roman)", "M&R",
+  "N&F Belvedere (Iași)", "Orkla Foods România", "Restaurant Marinaky (Iași)", "Romtrading Company", "Tamaz Frigocarne (Iași)", "Televiziunea Chișinău (Rep. Moldova)", "XXL & Com (Botoșani)", "IG Watteeuw (Iași)", "BMT Aerospace (Iași)", "CNUD Efco (Iași)", "Antibiotice SA (Iași)", "Selgros Cash & Carry (19 magazine)",
+] as const;
+
+export const featuredRefs = [
+  { value: "60.000 m³/h", title: "Centrală de tratare a aerului YORK", client: "Coca-Cola, Chișinău" },
+  { value: "537 kW", title: "Trei chillere YORK, cu vas intermediar de 8 m³", client: "Iași" },
+  { value: "4.000 pui/h", title: "Abator: instalații frigorifice în sistem pump cu R507B", client: "Rom Trading Company" },
+] as const;
+
+export const certs = [
+  { title: "ISO 9001", text: "Sistem de management al calității implementat din 2005, conform declarației firmei.", missing: "Aici va veni certificatul ISO 9001 în vigoare (emitent, număr, valabilitate)." },
+  { title: "Autorizare agenți frigorifici", text: "Firmă și tehnicieni certificați pentru lucrul cu agenți frigorifici, conform declarației firmei.", missing: "Aici vor veni atestatele în vigoare ale firmei și ale tehnicienilor." },
+  { title: "Distribuitor autorizat York", text: "Importator și distribuitor autorizat York, Johnson Controls, conform declarației firmei.", missing: "Aici va veni documentul de autorizare." },
+] as const;
+
+export const about = {
+  title: "Despre Confortex",
+  lead: "Confortex este specializată în tehnica frigului industrial, ventilație, aer condiționat, echipamente pentru industria alimentară și aer comprimat.",
+  paragraphs: [
+    "Oferim un pachet complet pornind de la cerințele dumneavoastră: livrare, montare, punere în funcțiune, service în perioada de garanție și post-garanție și instruirea personalului de exploatare.",
+    "Echipa are pregătire superioară și medie, cu vechime în domeniu între 5 și 25 de ani.",
+    "Lucrările noastre acoperă tot domeniul frigului, industrial și comercial: camere de refrigerare și congelare, depozite industriale, tuneluri de congelare, echipamente de climatizare și ventilație pentru clădiri rezidențiale și industriale. Executăm și izolarea termică și montajul de echipamente frigorifice pe autoutilitare și camioane.",
+    "Am dezvoltat și frigul adânc, cu temperaturi de până la −80 °C, și am contribuit la tehnica comprimării gazelor, domeniu în care firma declară brevete de invenție și inovație.",
+  ],
+  image: img("sediu-iasi", 1920, 1000, "Clădirea Confortex din Iași, cu firma roșie și albastră"),
+  methodology: "Complexitatea lucrărilor a cerut atât import de tehnologie, cât și know-how propriu.",
+} as const;
+
+export const region = "Iași, județele Suceava, Botoșani, Neamț, Vaslui și Republica Moldova";
+
+export const quoteForm = {
+  kinds: ["Ofertă pentru o lucrare nouă", "Service sau intervenție", "Piese și echipamente", "Altceva"],
+  domains: ["Industria alimentară", "Depozite și logistică la rece", "Comerț și HoReCa", "Clădiri și hale (HVAC)", "Altul"],
+  notice: "Formularul devine activ la lansare. Până atunci, cererea de ofertă se trimite la telefon sau pe e-mail.",
+} as const;
+
+export const legal = {
+  note: "Textele juridice sunt un model de lucru: trebuie validate de contabilul sau avocatul firmei înainte de lansare.",
+} as const;
