@@ -17,7 +17,7 @@ Niche: **hvac-refrigeration** (B2B; `trades-local-services` base only). Seeded f
 ## Project decisions
 
 - All client text in `content/site.ts` (config-first). Client: CONFORTEX SRL, CUI 1989262 (user-given). Reg. Com., registered-address confirmation, hours: visible placeholders. Public contact from old Contact page (Calea Chișinăului 29, Iași 700177; +40 232 231 900; confortex@confortex.ro). Staff names/mobiles NOT shown until client agrees.
-- Scope: local demo. User deploys to Vercel himself; remote `origin` = https://github.com/Razvan0206/Confortex.git. No push/deploy/send without explicit order. User cannot reach client yet: placeholders + gap list.
+- Scope: local demo. User deploys to Vercel himself. Standing rule (2026-10-02): commit + `git push origin main` (https://github.com/Razvan0206/Confortex.git, PUBLIC repo) after every change; never commit staff names/mobiles or `scrape/`. Deploy/send to third parties still needs an explicit order. User cannot reach client yet: placeholders + gap list.
 - Quote request visual only: submit disabled, visible notice "Formularul devine activ la lansare", tel/mailto. No fake submit. Launch: Server Action + Resend + Turnstile (11-capability-catalog).
 - Old site: audit `audit-old/AUDIT.md` (before/after numbers), text `audit-old/content-old.md`, mirror in `scrape/` (gitignored; `scripts/fetch-old-site.mjs`). Old site lockout plugin 403s after bursts: crawl slow, never bypass.
 - Brands: text only until logo permission. Certificates: only with documents; old scans in `scrape/files`, client confirms current.
