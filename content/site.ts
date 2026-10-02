@@ -41,15 +41,15 @@ export const hero = {
   title: "Frig industrial și HVAC, de la proiect la service",
   text: "Importator direct York, Güntner și Konvekta: livrare, montaj, punere în funcțiune și service în Iași și în regiune.",
   image: img("chiller-495kw", 900, 602, "Chiller montat pe o platformă metalică galbenă, în fața unei hale roșii"),
-  caption: "Chiller de 495 kW cu vas intermediar de 4 m³, pentru răcirea unei linii de îmbuteliere",
+  caption: "Chiller de 495 kW cu vas intermediar de 4 m³, pentru răcirea unei linii de îmbuteliere",
 };
 
 export const proof = [
-  { strong: "Din 1992", text: "pe piața frigului industrial" },
-  { strong: "Importator direct", text: "York, Güntner și Konvekta" },
-  { strong: "Camere frigorifice", text: "de la 10 la 2.000 m³" },
-  { strong: "Depozite industriale", text: "de 11.000 m³" },
-  { strong: "Chillere", text: "de la 8 la 1.000 kW" },
+  { figure: "Din 1992", label: "pe piața frigului industrial" },
+  { figure: "York, Güntner, Konvekta", label: "importator direct" },
+  { figure: "10 – 2.000 m³", label: "camere frigorifice" },
+  { figure: "11.000 m³", label: "depozite industriale" },
+  { figure: "8 – 1.000 kW", label: "chillere" },
 ] as const;
 
 export const domains = [
@@ -60,7 +60,7 @@ export const domains = [
   },
   {
     title: "Depozite și logistică la rece",
-    text: "Camere și depozite frigorifice din panouri sandwich, tuneluri de congelare, de la 10 la 11.000 m³.",
+    text: "Camere și depozite frigorifice din panouri sandwich, tuneluri de congelare, de la 10 la 11.000 m³.",
     image: img("depozit-navete", 900, 666, "Depozit frigorific cu navete stivuite"),
   },
   {
@@ -70,7 +70,7 @@ export const domains = [
   },
   {
     title: "Clădiri și hale (HVAC)",
-    text: "Chillere de la 8 la 1.000 kW, centrale de tratare a aerului până la 60.000 m³/h și rooftop-uri pentru fabrici, spitale și clădiri de birouri.",
+    text: "Chillere de la 8 la 1.000 kW, centrale de tratare a aerului până la 60.000 m³/h și rooftop-uri pentru fabrici, spitale și clădiri de birouri.",
     image: img("ahu-york-mare", 900, 675, "Centrală de tratare a aerului YORK montată pe o platformă metalică"),
   },
 ] as const;
@@ -234,7 +234,7 @@ export const products: readonly Product[] = [
     title: "Depozite din panouri sandwich",
     group: "depozite",
     lead: "Camere și depozite frigorifice din panouri sandwich cu spumă poliuretanică, demontabile sau semidemontabile. Pentru fiecare aplicație se elaborează o ofertă personalizată.",
-    points: ["Camere de refrigerare și congelare de la 10 m³ la 1.600 – 2.000 m³", "Depozite industriale de 11.000 m³", "Tuneluri de congelare", "Uși, burdufuri izotermice și încălzire de pardoseală"],
+    points: ["Camere de refrigerare și congelare de la 10 m³ la 1.600 – 2.000 m³", "Depozite industriale de 11.000 m³", "Tuneluri de congelare", "Uși, burdufuri izotermice și încălzire de pardoseală"],
     brand: "Isopan",
     image: img("p-depozite", 468, 250, "Interiorul unei camere frigorifice din panouri albe"),
     docs: [{ label: "Catalog Isopan", file: "Catalog-General-RO_REV_08.pdf" }],
@@ -244,7 +244,7 @@ export const products: readonly Product[] = [
     specs: [["Putere frigorifică", "8 – 1.000 kW"], ["Agent frigorific, compresor scroll", "R410A"], ["Agent frigorific, compresor cu șurub", "R134a"], ["Variantă", "cu sau fără kit hidraulic"]],
     title: "Chillere YORK",
     group: "hvac",
-    lead: "Chillerele YORK se livrează standard cu agregat de răcire cu freon R410A (compresor scroll) sau R134a (compresor cu șurub), cu sau fără kit hidraulic. Puteri de la 8 la 1.000 kW.",
+    lead: "Chillerele YORK se livrează standard cu agregat de răcire cu freon R410A (compresor scroll) sau R134a (compresor cu șurub), cu sau fără kit hidraulic. Puteri de la 8 la 1.000 kW.",
     points: ["Suporți antivibrații", "LAK (Low Ambient Kit) pentru funcționare pe frig", "Preechipare BMS"],
     brand: "York (Johnson Controls)",
     image: img("p-chillere", 468, 250, "Chiller cu condensare pe aer"),
@@ -252,15 +252,15 @@ export const products: readonly Product[] = [
   },
   {
     slug: "rooftop-uri",
-    specs: [["Putere de răcire, gama mică", "până la 40 kW"], ["Putere de răcire, gama mare", "45 – 84 kW"], ["Încălzire", "cu gaz metan"], ["Control", "controller DPC-1 și senzori"]],
+    specs: [["Putere de răcire, gama mică", "până la 40 kW"], ["Putere de răcire, gama mare", "45 – 84 kW"], ["Încălzire", "cu gaz metan"], ["Control", "controller DPC-1 și senzori"]],
     title: "Rooftop-uri YORK",
     group: "hvac",
     lead: "Agregate de tratare a aerului compacte, cu agregat frigorific inclus și încălzire cu gaz metan. Controlează calitatea, temperatura, umiditatea și viteza aerului cu un controller specializat și senzori. Importator direct.",
-    points: ["Rooftop-uri cu puteri de răcire până la 40 kW", "Rooftop-uri cu puteri de răcire de la 45 la 84 kW", "Senzori de temperatură, entalpie, calitate a aerului și fum"],
+    points: ["Rooftop-uri cu puteri de răcire până la 40 kW", "Rooftop-uri cu puteri de răcire de la 45 la 84 kW", "Senzori de temperatură, entalpie, calitate a aerului și fum"],
     brand: "York (Johnson Controls)",
     image: img("p-rooftop", 468, 250, "Rooftop YORK"),
     docs: [
-      { label: "Rooftop până la 40 kW", file: "EN-ACTIVA-017-040-2011.pdf" },
+      { label: "Rooftop până la 40 kW", file: "EN-ACTIVA-017-040-2011.pdf" },
       { label: "Rooftop 45 – 84 kW", file: "EN-ACTIVA-ARG-045-090-2011.pdf" },
     ],
   },
@@ -269,7 +269,7 @@ export const products: readonly Product[] = [
     specs: [["Debit de aer livrat", "2.000 – 60.000 m³/h"], ["Producător", "York (Johnson Controls)"]],
     title: "Centrale de tratare a aerului (AHU)",
     group: "hvac",
-    lead: "Centrale de tratare a aerului YORK pentru ventilație, încălzire și climatizare în hale și clădiri. Debitele livrate merg de la 2.000 la 60.000 m³/h.",
+    lead: "Centrale de tratare a aerului YORK pentru ventilație, încălzire și climatizare în hale și clădiri. Debitele livrate merg de la 2.000 la 60.000 m³/h.",
     brand: "York (Johnson Controls)",
     image: img("p-cta", 468, 250, "Centrală de tratare a aerului pe platformă"),
     note: "Aici va veni descrierea tehnică, din fișele YORK, după confirmarea clientului.",
@@ -354,7 +354,7 @@ export const gallery: readonly GalleryGroup[] = [
     title: "Chillere, rooftop-uri și centrale de tratare a aerului",
     items: [
       img("chillere-york", 900, 675, "Trei chillere YORK lângă rezervoare inox"),
-      img("chiller-495kw", 900, 602, "Chiller de 495 kW"),
+      img("chiller-495kw", 900, 602, "Chiller de 495 kW"),
       img("chiller-vas", 900, 675, "Chiller cu vas de expansiune roșu"),
       img("tablou-chiller", 900, 675, "Tabloul de comandă deschis al unui chiller"),
       img("ahu-york-acoperis", 900, 675, "Centrală de tratare a aerului YORK pe acoperiș"),
@@ -423,7 +423,7 @@ export const referenceGroups = [
   {
     id: "chillere",
     title: "Chillere",
-    intro: "Chillere YORK de la 26 la 537 kW, pentru industrie, spitale și clădiri comerciale.",
+    intro: "Chillere YORK de la 26 la 537 kW, pentru industrie, spitale și clădiri comerciale.",
     items: [
       { client: "METEX SA, Roman", what: "Pavilion Nicolina, Iași: chiller YORK YAES 0575", spec: "537 kW" },
       { client: "COCA COLA, Iași și Chișinău", what: "Chillere YORK YAES 0525, YLAE 330 SE, YCAM 360, YCAM 120", spec: "495 / 300 / 290 / 110 kW" },
@@ -457,12 +457,12 @@ export const otherClients = [
 
 export const featuredRefs = [
   { value: "60.000 m³/h", title: "Centrală de tratare a aerului YORK", client: "Coca-Cola, Chișinău" },
-  { value: "537 kW", title: "Trei chillere YORK, cu vas intermediar de 8 m³", client: "Iași" },
+  { value: "537 kW", title: "Trei chillere YORK, cu vas intermediar de 8 m³", client: "Iași" },
   { value: "4.000 pui/h", title: "Abator: instalații frigorifice în sistem pump cu R507B", client: "Rom Trading Company" },
 ] as const;
 
 export const certs = [
-  { title: "ISO 9001", text: "Sistem de management al calității implementat din 2005, conform declarației firmei.", missing: "Aici va veni certificatul ISO 9001 în vigoare (emitent, număr, valabilitate)." },
+  { title: "ISO 9001", text: "Sistem de management al calității implementat din 2005, conform declarației firmei.", missing: "Aici va veni certificatul ISO 9001 în vigoare (emitent, număr, valabilitate)." },
   { title: "Autorizare agenți frigorifici", text: "Firmă și tehnicieni certificați pentru lucrul cu agenți frigorifici, conform declarației firmei.", missing: "Aici vor veni atestatele în vigoare ale firmei și ale tehnicienilor." },
   { title: "Distribuitor autorizat York", text: "Importator și distribuitor autorizat York, Johnson Controls, conform declarației firmei.", missing: "Aici va veni documentul de autorizare." },
 ] as const;

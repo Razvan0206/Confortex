@@ -24,6 +24,7 @@
 }
 
 html {
+  background: var(--color-paper); /* explicit: the view-transition root snapshot shows white where the canvas colour is only propagated from body */
   scroll-padding-top: 5.5rem;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
@@ -142,8 +143,8 @@ button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callo
 @keyframes settle { from { transform: scale(1.07); } }
 @keyframes parallax { from { transform: scale(1.08) translateY(-2%); } to { transform: scale(1.08) translateY(4%); } }
 @keyframes pop { from { opacity: 0; transform: scale(0.6); } }
-@keyframes vt-out { to { opacity: 0; } }
-@keyframes vt-in { from { opacity: 0; transform: translateY(0.75rem); } }
+@keyframes vt-fade { from { opacity: 0; } }
+@keyframes vt-lift { from { transform: translateY(0.75rem); } }
 
 @media (prefers-reduced-motion: no-preference) {
   /* load: hero lines rise, an ink panel wipes off the (already painted) photo, the photo settles; text follows */
@@ -206,9 +207,9 @@ body:has(#oferta) .actionbar { display: none; }
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition-group(.prod-morph) { animation-duration: 450ms; animation-timing-function: var(--ease-in-out); }
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 200ms; }
-  /* every page change: the old page fades out fast, the new one fades in with a short rise (no scrolling to the top) */
-  ::view-transition-old(.page-out) { animation: 140ms var(--ease-out) both vt-out; }
-  ::view-transition-new(.page-in) { animation: 260ms var(--ease-out) 80ms both vt-in; }
+  /* every page change: a true cross-fade (old = the same fade reversed, so opacities always add up to 1: no dip, no flash) with a short rise on the new page */
+  ::view-transition-old(.page-out) { animation: 240ms var(--ease-out) both vt-fade reverse; }
+  ::view-transition-new(.page-in) { animation: 240ms var(--ease-out) both vt-fade, 300ms var(--ease-out) both vt-lift; }
   ::view-transition-group(site-header) { animation: none; z-index: 100; }
   ::view-transition-old(site-header) { display: none; }
   ::view-transition-new(site-header) { animation: none; }
