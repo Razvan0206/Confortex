@@ -1,5 +1,4 @@
 import { BrandsCerts } from "@/components/BrandsCerts";
-import { CapacityScale } from "@/components/CapacityScale";
 import { Domains } from "@/components/Domains";
 import { FeaturedRefs } from "@/components/FeaturedRefs";
 import { Hero } from "@/components/Hero";
@@ -18,7 +17,6 @@ export default function Home() {
       <div className="cv-sections">
         <Domains />
         <ServicesList compact />
-        <CapacityScale />
         <ProductGroups />
         <FeaturedRefs />
         <BrandsCerts />

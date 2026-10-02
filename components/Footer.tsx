@@ -8,7 +8,8 @@ export function Footer() {
     <footer className="on-ink border-t border-ink-line pb-24 pt-14 xl:pb-14">
       <div className="wrap grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1.2fr]">
         <div>
-          <Logo className="h-8 w-auto" />
+          <Logo className="h-10 w-auto" />
+          <p className="muted mt-3 text-sm">excelența confortului dumneavoastră</p>
           <p className="muted mt-5 max-w-sm">Frig industrial și comercial, HVAC și centrale de tratare a aerului. Livrare, montaj, service și instruire.</p>
         </div>
         <nav aria-label="Subsol">

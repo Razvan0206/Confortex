@@ -1,7 +1,13 @@
-import Image from "next/image";
+import logo from "@/content/logo.json";
 
-// ponytail: raster logo, ceiling 223x40 px (the only file on the old site; white PNG, slogan without diacritics),
-// upgrade: swap for the client's vector logo before launch.
+// Vector redraw of the client's 223x40 px PNG logo (scripts/build-logo.py): same snowflake and wordmark, crisp at any size.
+// ponytail: a redraw, not the client's master file; Arimo letterforms approximate the original lettering. Upgrade: swap in the vector master when the client sends it.
 export function Logo({ className = "" }: { className?: string }) {
-  return <Image src="/logo-white.png" alt="Confortex" width={223} height={40} priority className={className} />;
+  return (
+    <svg viewBox={`0 0 ${logo.w} ${logo.h}`} role="img" aria-label="Confortex" className={className}>
+      <path d={logo.flake} fill="none" stroke="currentColor" strokeWidth="2.1" />
+      <path d={logo.white} fill="currentColor" />
+      <path d={logo.red} fill="var(--color-brand)" />
+    </svg>
+  );
 }

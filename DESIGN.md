@@ -89,9 +89,9 @@ components:
 
 **Creative North Star: "The Plant Room Panel"**
 
-A technical supplier's site that reads like a well-labelled control panel: a dark ink frame (header, hero, capacity scale, quote band, footer) around pale working surfaces, one signal red, square corners, hexagon marks and real numbers. The ink frame exists because the client's logo is a white raster; content sits on paper and white. This is a deliberate single-theme deviation, not a dark mode.
+A technical supplier's site that reads like a well-labelled control panel: a dark ink frame (header, hero, quote band, footer) around pale working surfaces, one signal red, square corners, hexagon marks and real numbers. The ink frame exists because the client's logo is a white raster; content sits on paper and white. This is a deliberate single-theme deviation, not a dark mode.
 
-Trust comes from proof, not decoration: photos are real, the capacity scale is drawn on a logarithmic axis from the figures in the content file, and claims that are not yet confirmed carry a visible disclaimer. Density is medium; sections are separated by generous vertical bands rather than cards or borders.
+Trust comes from proof, not decoration: photos are real, capacities (m³, kW, m³/h, °C) appear as plain figures in the proof line and card texts (a drawn axis was removed: it added nothing next to the numbers), and claims that are not yet confirmed carry a visible disclaimer. Density is medium; sections are separated by generous vertical bands rather than cards or borders.
 
 **Key Characteristics:**
 - One accent (logo red), used for actions, marks and the progress line only.
@@ -106,14 +106,14 @@ Trust comes from proof, not decoration: photos are real, the capacity scale is d
 A cool graphite and paper neutral set with one red sampled from the client's logo.
 
 ### Primary
-- **Logo Red** (#ff0019): marks only: hexagon bullets, nav underline, capacity bars, scroll progress bar, large type on ink. Too light for small text or white-text fills.
+- **Logo Red** (#ff0019): marks only: hexagon bullets, nav underline, scroll progress bar, the "EX" of the logo, large type on ink. Too light for small text or white-text fills.
 - **Signal Red** (#d6001a): the UI red: button fills with white text, hexagon badges, selection, focus ring, timeline fill, mobile action-bar CTA. Passes 4.5:1 with white.
 - **Pressed Red** (#b00015): hover state of the primary button.
 
 ### Neutral
 - **Plant Ink** (#14171c): header, hero, scale, quote band, footer; body text on light surfaces.
 - **Ink Raised** (#1d2229): proof strip band directly under the hero.
-- **Ink Rule** (#333b45): borders and axis lines on ink.
+- **Ink Rule** (#333b45): borders on ink.
 - **Ink Muted** (#b4bcc6): secondary text on ink.
 - **Steel** (#566070): secondary text and helper text on paper and white.
 - **Hairline** (#d9dee4): light dividers, timeline track.
@@ -139,7 +139,7 @@ A cool graphite and paper neutral set with one red sampled from the client's log
 - **Label** (600, 0.95rem to 1rem): form labels, phone number in header, buttons (600).
 
 ### Named Rules
-**The Tabular Number Rule.** Every figure (phone, capacities, years, axis ticks, badge numbers) uses `.num` (tabular-nums). Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`.
+**The Tabular Number Rule.** Every figure (phone, capacities, years, badge numbers) uses `.num` (tabular-nums). Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`.
 
 ## Layout
 
@@ -154,7 +154,7 @@ Flat. There are no box-shadows anywhere in the build. Depth is tonal: ink bands 
 
 ## Shapes
 
-Sharp. Controls (buttons, inputs, selects, textareas) have a 2px radius; everything else is 0. The hexagon is the only signature shape: `.hex` clip-path polygon (50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%), used for numbered badges (52x60px, Signal Red, white tabular number), the 0.6rem list-note bullet, and timeline nodes. Photos are rectangular, clipped in `.zoom` frames. Line weights: 1.5px for line buttons and field borders, 2px for nav underline, axis and timeline.
+Sharp. Controls (buttons, inputs, selects, textareas) have a 2px radius; everything else is 0. The hexagon is the only signature shape: `.hex` clip-path polygon (50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%), used for numbered badges (52x60px, Signal Red, white tabular number), the 0.6rem list-note bullet, and timeline nodes. Photos are rectangular, clipped in `.zoom` frames. Line weights: 1.5px for line buttons and field borders, 2px for nav underline and timeline.
 
 ### Named Rules
 **The Only Hexagon Rule.** The hexagon is the sole decorative shape; no circles, pills, blobs or rounded cards.
@@ -176,9 +176,6 @@ Sharp. Controls (buttons, inputs, selects, textareas) have a 2px radius; everyth
 
 ### Hex Badge and Note
 - Numbered hexagon badge for services and a hexagon-bullet `note` row for facts. Substitutes for borders and cards.
-
-### Capacity Scale
-- Signature: logarithmic axis on ink, 2px ink-rule baseline, Logo Red bars positioned from the content data, tick labels in Ink Muted. Bars draw in on scroll.
 
 ### Photo Frames
 - Real photographs in clipped rectangles; slow 1.03 zoom on hover (500ms, mouse only). The product photo morphs between list and detail via view transitions.
@@ -202,3 +199,12 @@ Sharp. Controls (buttons, inputs, selects, textareas) have a 2px radius; everyth
 - **Don't** add a second typeface, serif, or mono.
 - **Don't** use side-stripe borders for emphasis; use the hexagon note instead.
 - **Don't** add carousels, marquees or animation libraries.
+
+### Logo
+Vector redraw of the client's 223x40 px PNG (`scripts/build-logo.py`, `content/logo.json`): six-arm snowflake with V branches, Arimo outlines for CONFORTEX, "EX" in Logo Red. The slogan is real text in the footer. Header uses the compact lockup at 32px; `public/logo.svg` holds the full lockup with slogan.
+
+### Mobile menu
+Disclosure panel under the header (clip-path, ease-drawer 340ms), burger bars turn into an X (280ms), links rise in with 45ms stagger, backdrop fades, page scroll locked while open; Escape and any navigation close it.
+
+### Page transitions
+`app/template.tsx` wraps every page in a ViewTransition (old page fades out 140ms, new one fades in 260ms with a 0.75rem rise); `<html data-scroll-behavior="smooth">` keeps Next from scrolling visibly to the top or to a hash. Product list to product page morphs the shared photo (450ms ease-in-out).

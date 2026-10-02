@@ -61,7 +61,7 @@ button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callo
   .on-white .muted { color: var(--color-steel); }
   .on-white { background: #fff; }
   /* home page only: the section keeps its background, its content is skipped while off-screen (first paint 1.3 s -> 0.2 s) */
-  .cv-sections > section:not(.cv-off) > .wrap { content-visibility: auto; contain-intrinsic-size: auto 34rem; }
+  .cv-sections > section > .wrap { content-visibility: auto; contain-intrinsic-size: auto 34rem; }
 
   /* one corner language: sharp (2px on controls, 0 elsewhere); the hexagon is the only signature shape */
   .btn {
@@ -120,14 +120,6 @@ button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callo
   .field small { color: var(--color-steel); }
 }
 
-/* capacity scale (log axis, drawn from real numbers in content/site.ts) */
-.axis { position: relative; height: 2.5rem; border-bottom: 2px solid var(--color-ink-line); }
-.axis .bar { position: absolute; bottom: -2px; height: 1.25rem; background: var(--color-brand); transform-origin: left; }
-.axis .tick { position: absolute; top: 100%; width: 1px; height: 0.5rem; background: var(--color-ink-line); }
-.axis .tick span { position: absolute; top: 0.6rem; left: 0; transform: translateX(-50%); font-size: 0.75rem; color: var(--color-ink-muted); white-space: nowrap; }
-.axis .tick:first-child span { transform: translateX(-10%); }
-.axis .tick:last-child span { transform: translateX(-90%); }
-
 /* hero: masked lines, photo frame, scroll bar */
 .line { display: block; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; } /* room for descenders (g, p, ș, ț) */
 .line > span { display: block; }
@@ -150,6 +142,8 @@ button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callo
 @keyframes settle { from { transform: scale(1.07); } }
 @keyframes parallax { from { transform: scale(1.08) translateY(-2%); } to { transform: scale(1.08) translateY(4%); } }
 @keyframes pop { from { opacity: 0; transform: scale(0.6); } }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(0.75rem); } }
 
 @media (prefers-reduced-motion: no-preference) {
   /* load: hero lines rise, an ink panel wipes off the (already painted) photo, the photo settles; text follows */
@@ -161,7 +155,6 @@ button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callo
   @supports (animation-timeline: view()) {
     /* scroll-linked (linear): reveal with a short stagger per --i, bars and hexagons draw in */
     .reveal { animation: rise-in linear backwards; animation-timeline: view(); animation-range: entry calc(var(--i, 0) * 6%) entry calc(32% + var(--i, 0) * 6%); }
-    .axis .bar { animation: grow-x linear backwards; animation-timeline: view(); animation-range: entry 10% entry 70%; }
     .reveal .hex-badge { animation: pop linear backwards; animation-timeline: view(); animation-range: entry 8% entry 38%; }
     .tl-fill { animation: grow-y linear both; animation-timeline: view(); animation-range: entry 45% cover 55%; }
     .tl-node { animation: pop linear backwards; animation-timeline: view(); animation-range: entry calc(30% + var(--i, 0) * 5%) entry calc(48% + var(--i, 0) * 5%); }
@@ -175,23 +168,26 @@ button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callo
   html { scroll-behavior: auto; }
 }
 
-/* mobile menu: a drawer from the right (ease-drawer), links rise in one after another */
-dialog.menu {
-  inset: 0 0 0 auto; margin: 0 0 0 auto; width: min(26rem, 100%); height: 100dvh; max-width: none; max-height: none;
-  border: 0; background: var(--color-ink); color: #fff; overscroll-behavior: contain;
-  transform: translateX(100%);
-}
-dialog.menu[open] { transform: none; }
-dialog.menu::backdrop { background: rgb(0 0 0 / 0.6); opacity: 0; }
-dialog.menu[open]::backdrop { opacity: 1; }
+/* mobile menu: the panel drops from under the header (clip-path, ease-drawer), the burger turns into an X, links rise in */
+.burger { position: relative; width: 3rem; height: 3rem; }
+.burger span { position: absolute; left: 50%; top: 50%; width: 1.5rem; height: 2px; margin: -1px 0 0 -0.75rem; background: currentColor; }
+.burger span:nth-child(1) { transform: translateY(-7px); }
+.burger span:nth-child(3) { transform: translateY(7px); }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { transform: scaleX(0); opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg); }
+.mmenu { position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100dvh - 4.3125rem); overflow-y: auto; overscroll-behavior: contain; border-bottom: 1px solid var(--color-ink-line); clip-path: inset(0 0 100% 0); visibility: hidden; }
+.mmenu[data-open="true"] { clip-path: inset(0); visibility: visible; }
+.mmenu-backdrop { position: absolute; top: 100%; left: 0; right: 0; height: 100dvh; background: rgb(0 0 0 / 0.55); opacity: 0; visibility: hidden; }
+.mmenu-backdrop[data-open="true"] { opacity: 1; visibility: visible; }
+html:has(.mmenu[data-open="true"]) { overflow: hidden; }
 @media (prefers-reduced-motion: no-preference) {
-  dialog.menu { transition: transform 280ms var(--ease-drawer), overlay 280ms allow-discrete, display 280ms allow-discrete; }
-  dialog.menu::backdrop { transition: opacity 280ms var(--ease-out), overlay 280ms allow-discrete, display 280ms allow-discrete; }
-  @starting-style {
-    dialog.menu[open] { transform: translateX(100%); }
-    dialog.menu[open]::backdrop { opacity: 0; }
-  }
-  dialog.menu[open] li { animation: rise-in 400ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 50ms + 150ms); }
+  .burger span { transition: transform 280ms var(--ease-out), opacity 160ms ease; }
+  .mmenu { transition: clip-path 340ms var(--ease-drawer), visibility 0s linear 340ms; }
+  .mmenu[data-open="true"] { transition: clip-path 340ms var(--ease-drawer), visibility 0s; }
+  .mmenu-backdrop { transition: opacity 280ms var(--ease-out), visibility 0s linear 280ms; }
+  .mmenu-backdrop[data-open="true"] { transition: opacity 280ms var(--ease-out), visibility 0s; }
+  .mmenu[data-open="true"] li { animation: rise-in 380ms var(--ease-out) backwards; animation-delay: calc(var(--i, 0) * 45ms + 120ms); }
 }
 
 /* lightbox (projects): fades in; the image itself swaps instantly (it is used by keyboard and swipe many times) */
@@ -210,6 +206,9 @@ body:has(#oferta) .actionbar { display: none; }
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition-group(.prod-morph) { animation-duration: 450ms; animation-timing-function: var(--ease-in-out); }
   ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 200ms; }
+  /* every page change: the old page fades out fast, the new one fades in with a short rise (no scrolling to the top) */
+  ::view-transition-old(.page-out) { animation: 140ms var(--ease-out) both vt-out; }
+  ::view-transition-new(.page-in) { animation: 260ms var(--ease-out) 80ms both vt-in; }
   ::view-transition-group(site-header) { animation: none; z-index: 100; }
   ::view-transition-old(site-header) { display: none; }
   ::view-transition-new(site-header) { animation: none; }

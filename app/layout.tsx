@@ -39,7 +39,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="ro" className={geist.variable}>
+    <html lang="ro" data-scroll-behavior="smooth" className={geist.variable}>
       <body>
         <a href="#main" className="sr-only z-50 bg-white px-4 py-3 font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
           Sari la conținut

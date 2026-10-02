@@ -2,46 +2,48 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
-import { Icon } from "./Icon";
+import { useEffect, useRef, useState } from "react";
 
+// Disclosure menu: a panel drops from under the header (clip-path), the burger turns into an X, links rise in one by one.
+// `openPath` instead of a boolean: changing page closes the menu without an effect.
 export function MobileMenu({ items, cta, phone, phoneHref }: { items: readonly { label: string; href: string }[]; cta: { label: string; href: string }; phone: string; phoneHref: string }) {
-  const ref = useRef<HTMLDialogElement>(null);
-  const [open, setOpen] = useState(false);
   const path = usePathname();
-  const close = () => ref.current?.close();
+  const [openPath, setOpenPath] = useState<string | null>(null);
+  const open = openPath === path;
+  const button = useRef<HTMLButtonElement>(null);
+  const close = () => setOpenPath(null);
   const current = (href: string) => (href === "/" ? path === "/" : path === href || path.startsWith(`${href}/`));
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpenPath(null);
+      button.current?.focus();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <div className="xl:hidden">
       <button
+        ref={button}
         type="button"
-        onClick={() => {
-          ref.current?.showModal();
-          setOpen(true);
-        }}
-        aria-label="Deschide meniul"
-        aria-haspopup="dialog"
+        onClick={() => setOpenPath(open ? null : path)}
+        aria-label={open ? "Închide meniul" : "Deschide meniul"}
         aria-expanded={open}
         aria-controls="meniu-mobil"
-        className="flex size-12 items-center justify-center"
+        className="burger"
       >
-        <Icon name="menu" className="size-7" />
+        <span />
+        <span />
+        <span />
       </button>
-      <dialog
-        id="meniu-mobil"
-        ref={ref}
-        aria-label="Meniu"
-        onClose={() => setOpen(false)}
-        onClick={(e) => e.target === ref.current && close()}
-        className="menu on-ink overscroll-contain p-6"
-      >
-        <form method="dialog" className="flex justify-end">
-          <button aria-label="Închide meniul" className="flex size-12 items-center justify-center">
-            <Icon name="close" className="size-7" />
-          </button>
-        </form>
-        <nav aria-label="Meniu mobil">
-          <ul className="mt-4 grid">
+      <div className="mmenu-backdrop" data-open={open} onClick={close} aria-hidden />
+      <div id="meniu-mobil" className="mmenu on-ink" data-open={open} inert={!open}>
+        <nav aria-label="Meniu mobil" className="wrap">
+          <ul className="grid">
             {items.map((i, n) => (
               <li key={i.href} style={{ "--i": n } as React.CSSProperties}>
                 <Link href={i.href} onClick={close} aria-current={current(i.href) ? "page" : undefined} className="block border-t border-ink-line py-4 text-2xl font-semibold aria-[current=page]:text-brand">
@@ -50,16 +52,16 @@ export function MobileMenu({ items, cta, phone, phoneHref }: { items: readonly {
               </li>
             ))}
           </ul>
+          <div className="grid gap-3 pb-8 pt-6">
+            <Link href={cta.href} onClick={close} className="btn btn-red">
+              {cta.label}
+            </Link>
+            <a href={phoneHref} className="btn btn-line">
+              {phone}
+            </a>
+          </div>
         </nav>
-        <div className="mt-8 grid gap-3">
-          <Link href={cta.href} onClick={close} className="btn btn-red">
-            {cta.label}
-          </Link>
-          <a href={phoneHref} className="btn btn-line">
-            {phone}
-          </a>
-        </div>
-      </dialog>
+      </div>
     </div>
   );
 }

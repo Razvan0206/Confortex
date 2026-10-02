@@ -40,8 +40,8 @@ export const site = {
 export const hero = {
   title: "Frig industrial și HVAC, de la proiect la service",
   text: "Importator direct York, Güntner și Konvekta: livrare, montaj, punere în funcțiune și service în Iași și în regiune.",
-  image: img("chillere-york", 900, 675, "Trei chillere YORK montate lângă rezervoare inox, în curtea unui combinat"),
-  caption: "Trei chillere YORK de 537 kW fiecare, cu vas intermediar de 8 m³",
+  image: img("chiller-495kw", 900, 602, "Chiller montat pe o platformă metalică galbenă, în fața unei hale roșii"),
+  caption: "Chiller de 495 kW cu vas intermediar de 4 m³, pentru răcirea unei linii de îmbuteliere",
 };
 
 export const proof = [
@@ -49,40 +49,8 @@ export const proof = [
   { strong: "Importator direct", text: "York, Güntner și Konvekta" },
   { strong: "Camere frigorifice", text: "de la 10 la 2.000 m³" },
   { strong: "Depozite industriale", text: "de 11.000 m³" },
-  { strong: "Centrale de tratare a aerului", text: "până la 60.000 m³/h" },
+  { strong: "Chillere", text: "de la 8 la 1.000 kW" },
 ] as const;
-
-// Range bars: drawn on a log scale between lo and hi of each axis.
-export const scale = {
-  intro: "Numerele de mai jos sunt lucrări declarate de Confortex pe site-ul vechi; se confirmă cu documente înainte de lansare.",
-  axes: [
-    {
-      unit: "m³",
-      title: "Volum de spațiu răcit",
-      lo: 10,
-      hi: 100000,
-      rows: [
-        { label: "Camere de refrigerare și congelare", from: 10, to: 2000, text: "10 – 2.000 m³" },
-        { label: "Depozite industriale", from: 11000, to: 11000, text: "11.000 m³" },
-      ],
-    },
-    {
-      unit: "kW",
-      title: "Putere frigorifică",
-      lo: 1,
-      hi: 10000,
-      rows: [{ label: "Chillere (compresoare scroll și cu șurub)", from: 8, to: 1000, text: "8 – 1.000 kW" }],
-    },
-    {
-      unit: "m³/h",
-      title: "Debit de aer",
-      lo: 1000,
-      hi: 100000,
-      rows: [{ label: "Centrale de tratare a aerului (AHU)", from: 2000, to: 60000, text: "2.000 – 60.000 m³/h" }],
-    },
-  ],
-  deep: { label: "Frig adânc", text: "până la −80 °C", note: "Criostate până la −40 °C și ultracriostate de la −40 la −70 °C (declarat pe site-ul vechi)." },
-} as const;
 
 export const domains = [
   {
@@ -102,7 +70,7 @@ export const domains = [
   },
   {
     title: "Clădiri și hale (HVAC)",
-    text: "Chillere, centrale de tratare a aerului și rooftop-uri pentru fabrici, spitale și clădiri de birouri.",
+    text: "Chillere de la 8 la 1.000 kW, centrale de tratare a aerului până la 60.000 m³/h și rooftop-uri pentru fabrici, spitale și clădiri de birouri.",
     image: img("ahu-york-mare", 900, 675, "Centrală de tratare a aerului YORK montată pe o platformă metalică"),
   },
 ] as const;
@@ -153,7 +121,7 @@ export const productGroups = [
   { id: "refrigerare", title: "Refrigerare industrială și comercială", text: "Agregate, compresoare, centrale frigorifice, vaporizatoare, mobilier frigorific și piese.", image: img("centrala-compresoare", 900, 602, "Centrală frigorifică cu compresoare, într-o sală tehnică") },
   { id: "depozite", title: "Camere și depozite frigorifice", text: "Panouri sandwich demontabile sau semidemontabile, personalizate pe aplicație.", image: img("camera-frig-goala", 900, 675, "Interiorul unei camere frigorifice cu vaporizatoare") },
   { id: "hvac", title: "Climatizare și HVAC", text: "Chillere, rooftop-uri, centrale de tratare a aerului, aer condiționat și filtre.", image: img("ahu-york-acoperis", 900, 675, "Centrală de tratare a aerului YORK pe acoperiș") },
-  { id: "frig-adanc", title: "Frig adânc", text: "Criostate și ultracriostate pentru laboratoare, industria farmaceutică și medicală.", image: img("p-criostate", 468, 250, "Criostat de laborator") },
+  { id: "frig-adanc", title: "Frig adânc", text: "Criostate și ultracriostate, cu temperaturi până la −80 °C, pentru laboratoare, industria farmaceutică și medicală.", image: img("p-criostate", 468, 250, "Criostat de laborator") },
 ] as const;
 
 export const products: readonly Product[] = [

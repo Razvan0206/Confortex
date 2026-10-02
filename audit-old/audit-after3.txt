@@ -1,0 +1,85 @@
+== MOBILE (4x CPU, ~1.6 Mbps, 150 ms), returning visitor
+load event: 1951 ms | LCP: 1508 ms (IMG.hero-img h-auto w-full) | CLS: 0.000 | long tasks: 2, TBT~702 ms
+transferred: 330 KB in 26 requests; by type: {
+  Document: '22 KB',
+  Image: '87 KB',
+  Stylesheet: '10 KB',
+  Script: '143 KB',
+  Font: '45 KB',
+  Fetch: '18 KB',
+  Other: '4 KB'
+}
+largest: 70KB Script /_next/static/chunks/1b0ecbypluulw.js
+
+== A11Y / STRUCTURE
+{
+ "lang": "ro",
+ "title": "Confortex Iași | Frig industrial, HVAC și centrale de tratare a aerului",
+ "metaDesc": true,
+ "themeColor": true,
+ "og": true,
+ "jsonLd": true,
+ "canonical": false,
+ "skipLink": true,
+ "landmarks": {
+  "header": 1,
+  "nav": 4,
+  "main": 1,
+  "footer": 1
+ },
+ "headings": [
+  "H1:Frig industrial și HVAC,de l",
+  "H2:Pentru cine lucrăm",
+  "H3:Industria alimentară",
+  "H3:Depozite și logistică la rec",
+  "H3:Comerț și HoReCa",
+  "H3:Clădiri și hale (HVAC)",
+  "H2:De la proiect la service, un",
+  "H3:Consultanță și proiectare",
+  "H3:Montaj și punere în funcțiun",
+  "H3:Service și mentenanță",
+  "H3:Instruire",
+  "H2:Echipamente și instalații",
+  "H2:Lucrări care arată capacitat",
+  "H3:Centrală de tratare a aerulu",
+  "H3:Trei chillere YORK, cu vas i",
+  "H3:Abator: instalații frigorifi",
+  "H2:Mărci reprezentate",
+  "H2:Certificări și autorizări",
+  "H3:ISO 9001",
+  "H3:Autorizare agenți frigorific",
+  "H3:Distribuitor autorizat York",
+  "H2:Cere ofertă pentru lucrarea ",
+  "H2:Pagini",
+  "H2:Produse",
+  "H2:Contact"
+ ],
+ "imgNoAlt": 0,
+ "imgEmptyAlt": 0,
+ "buttonsNoName": 0,
+ "videoAria": [],
+ "htmlScrollPad": "88px",
+ "sectionScrollMargin": [],
+ "viewportMeta": "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content",
+ "textWrapBalance": "balance",
+ "touchAction": "manipulation"
+}
+focus order (first 12): A[Sari la conținut] outline=true bg=rgb(255, 255, 255)
+   A[Confortex, prima pagin] outline=true bg=none
+   A[Acasă] outline=true bg=none
+   A[Despre noi] outline=true bg=none
+   A[Produse] outline=true bg=none
+   A[Servicii] outline=true bg=none
+   A[Proiecte] outline=true bg=none
+   A[Contact] outline=true bg=none
+   A[Sună la +40 232 231 90] outline=true bg=none
+   A[Cere ofertă] outline=true bg=rgb(214, 0, 26)
+   A[Cere ofertă] outline=true bg=rgb(214, 0, 26)
+   A[+40 232 231 900] outline=true bg=none
+
+== CONTRAST (text over solid backgrounds), mobile
+no failures found
+== TOUCH TARGETS < 44px: 
+  Sari la conținut32x24
+
+== NO-JS RENDER: {"hiddenTextBlocks":29,"totalTextBlocks":116,"h1Translated":true,"introOverlayDisplayed":false}
