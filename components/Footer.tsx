@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="on-ink pb-24 pt-14 lg:pb-14">
+    <footer className="on-ink border-t border-ink-line pb-24 pt-14 xl:pb-14">
       <div className="wrap grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1.2fr]">
         <div>
           <Logo className="h-8 w-auto" />
@@ -71,7 +71,7 @@ export function Footer() {
       </div>
       <div className="wrap mt-12 border-t border-ink-line pt-6">
         <p className="muted text-sm">
-          {site.legalName} · CUI {site.cui} · {site.regCom ?? "Nr. Reg. Com.: aici va veni numărul de înregistrare (TODO client)"} · Sediu: {site.street}, {site.city} {site.zip}
+          {site.legalName} · CUI {site.cui} · {site.regCom ?? "Nr. Reg. Com.: [de completat de client]"} · Sediu: {site.street}, {site.city} {site.zip}
         </p>
         <p className="muted mt-2 text-sm">Variantă demo, în pregătire. Conținutul se confirmă cu clientul înainte de lansare.</p>
       </div>

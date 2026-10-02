@@ -19,3 +19,4 @@ audit-old/out-new/
 audit-old/server.log
 audit-old/*.log
 audit-old/shots/
+audit-old/lh-*.json

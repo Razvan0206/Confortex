@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <>
       <PageHero title="Produse" lead="Echipamente și instalații pentru frig industrial și comercial, depozite frigorifice și climatizare. Pentru fiecare aplicație elaborăm o ofertă personalizată." />
-      <nav aria-label="Categorii de produse" className="on-white sticky top-[4.25rem] z-30 border-b border-line">
+      <nav aria-label="Categorii de produse" className="on-white z-30 border-b border-line md:sticky md:top-[4.25rem]">
         <ul className="wrap flex gap-x-6 overflow-x-auto py-1 text-[0.95rem] font-medium">
           {productGroups.map((g) => (
             <li key={g.id} className="shrink-0">

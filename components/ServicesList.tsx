@@ -15,7 +15,7 @@ export function ServicesList({ compact = false }: { compact?: boolean }) {
             <p className="muted mt-4 max-w-sm">Livrare, montare, punere în funcțiune, service în garanție și post-garanție, instruirea personalului de exploatare.</p>
             {compact && (
               <Link href="/servicii-confortex" className="link mt-6 inline-flex min-h-11 items-center gap-2 font-semibold">
-                Toate serviciile <Icon name="arrow" className="size-4" />
+                Toate serviciile <Icon name="arrow" className="ico-arrow size-4" />
               </Link>
             )}
           </div>

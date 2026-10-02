@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { quoteForm, site } from "@/content/site";
+import { quoteForm, quoteMailto, site } from "@/content/site";
 import { Icon } from "./Icon";
 
 // ponytail: visual-only form, ceiling: sends nothing (submit disabled, visible notice, tel/mailto fallback),
@@ -77,8 +77,8 @@ export function QuoteForm() {
             <a href={site.phoneHref} className="link num inline-flex min-h-11 items-center gap-2">
               <Icon name="phone" className="size-4" /> {site.phone}
             </a>
-            <a href={`mailto:${site.email}`} className="link inline-flex min-h-11 items-center gap-2">
-              <Icon name="mail" className="size-4" /> {site.email}
+            <a href={quoteMailto} className="link inline-flex min-h-11 items-center gap-2">
+              <Icon name="mail" className="size-4" /> Scrieți-ne pe e-mail cu datele cererii
             </a>
           </p>
         </div>

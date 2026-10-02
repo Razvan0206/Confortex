@@ -514,6 +514,19 @@ export const about = {
 
 export const region = "Iași, județele Suceava, Botoșani, Neamț, Vaslui și Republica Moldova";
 
+// Working fallback while the form is inactive: opens the visitor's mail app with a prefilled quote request.
+const quoteBody = [
+  "Bună ziua,",
+  "",
+  "Vă rog să-mi trimiteți o ofertă pentru:",
+  "- Tipul lucrării sau al echipamentului:",
+  "- Localitatea:",
+  "- Dimensiune sau capacitate:",
+  "",
+  "Nume, firmă, telefon:",
+].join("\n");
+export const quoteMailto = `mailto:${site.email}?subject=${encodeURIComponent("Cerere de ofertă")}&body=${encodeURIComponent(quoteBody)}`;
+
 export const quoteForm = {
   kinds: ["Ofertă pentru o lucrare nouă", "Service sau intervenție", "Piese și echipamente", "Altceva"],
   domains: ["Industria alimentară", "Depozite și logistică la rece", "Comerț și HoReCa", "Clădiri și hale (HVAC)", "Altul"],

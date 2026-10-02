@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import type { GalleryGroup } from "@/content/site";
+import { Icon } from "./Icon";
 
 // Thumbnail grids per group + one native <dialog> lightbox: arrows, Escape, swipe; the open image is the only full-size one loaded.
 export function Gallery({ groups }: { groups: readonly GalleryGroup[] }) {
@@ -73,10 +74,10 @@ export function Gallery({ groups }: { groups: readonly GalleryGroup[] }) {
           <div className="relative min-h-0 flex-1">
             <Image key={cur.src} src={cur.src} alt={cur.alt} fill sizes="100vw" className="object-contain px-2 pb-4 md:px-20" />
             <button type="button" onClick={() => go(-1)} aria-label="Fotografia anterioară" className="btn btn-red absolute left-2 top-1/2 -translate-y-1/2 px-3 md:left-6">
-              <span aria-hidden>←</span>
+              <Icon name="arrow-left" />
             </button>
             <button type="button" onClick={() => go(1)} aria-label="Fotografia următoare" className="btn btn-red absolute right-2 top-1/2 -translate-y-1/2 px-3 md:right-6">
-              <span aria-hidden>→</span>
+              <Icon name="arrow" />
             </button>
           </div>
         </div>

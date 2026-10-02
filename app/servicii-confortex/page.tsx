@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
+import { PhotoStrip } from "@/components/PhotoStrip";
 import { QuoteBand } from "@/components/QuoteBand";
 import { ServicesList } from "@/components/ServicesList";
 import { extraServices, site } from "@/content/site";
@@ -29,6 +30,7 @@ export default function Page() {
           </ul>
         </div>
       </section>
+      <PhotoStrip title="Din lucrările noastre" />
       <QuoteBand />
     </>
   );

@@ -20,7 +20,8 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
 };
 
-export const viewport: Viewport = { themeColor: "#14171c" };
+// viewport-fit=cover lets the fixed action bar use the safe-area insets; resizes-content keeps the form usable above the phone keyboard
+export const viewport: Viewport = { themeColor: "#14171c", viewportFit: "cover", interactiveWidget: "resizes-content" };
 
 const jsonLd = {
   "@context": "https://schema.org",

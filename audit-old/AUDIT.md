@@ -42,11 +42,11 @@ Home, Despre noi, Produse, Servicii, Contact. Fără pagină de proiecte (referi
 
 | Metrică | Vechi | Nou |
 |---|---|---|
-| LCP | 5732 ms | 1900 – 2064 ms (3 rulări) |
+| LCP | 5732 ms | 1636 – 1660 ms (audit propriu, după faza 2); 1900 – 2064 ms înainte de ea |
 | CLS | 1,006 | 0,000 |
 | Transfer (revenire) | 1001 KB, 52 cereri | 329 KB, 20 cereri |
 | JS | 194 KB | 141 KB |
-| TBT (emulat) | ~612 ms | ~1150 – 1290 ms: NEremediat (cost React + layout pe pagină lungă; la 4x CPU) |
+| TBT (emulat, audit propriu) | ~612 ms | ~860 ms (era ~1150 – 1290 ms); Lighthouse raportează TBT 50 – 90 ms |
 | `lang` | en-US | ro |
 | Landmark-uri | 0 | header, nav, main, footer |
 | H1 pe pagină | 4 | 1 |
@@ -58,6 +58,8 @@ Home, Despre noi, Produse, Servicii, Contact. Fără pagină de proiecte (referi
 | Ancore (13 ținte, 2 lățimi) | n/a | toate OK |
 | Date firmă în footer | nu | denumire, CUI, Reg. Com. (placeholder), adresă, telefon, e-mail |
 | Terți fără consimțământ | Google Maps (cheie invalidă) | niciunul |
+| Lighthouse mobil (acasă / produs / proiecte / servicii / contact) | n/a | performanță 94 / 96 / 94 / 96 / 97; accesibilitate 100 pe toate; practici 100; SEO 63 (doar `noindex`, intenționat) |
+| Primul paint, fără throttling (acasă) | 1285 ms | 162 ms (`content-visibility` pe secțiunile de sub fold) |
 
 ## Ce funcționează
 

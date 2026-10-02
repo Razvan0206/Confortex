@@ -1,29 +1,50 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { usePathname } from "next/navigation";
+import { useRef, useState } from "react";
+import { Icon } from "./Icon";
 
 export function MobileMenu({ items, cta, phone, phoneHref }: { items: readonly { label: string; href: string }[]; cta: { label: string; href: string }; phone: string; phoneHref: string }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const [open, setOpen] = useState(false);
+  const path = usePathname();
   const close = () => ref.current?.close();
+  const current = (href: string) => (href === "/" ? path === "/" : path === href || path.startsWith(`${href}/`));
   return (
-    <div className="lg:hidden">
-      <button type="button" onClick={() => ref.current?.showModal()} aria-label="Deschide meniul" className="flex size-12 flex-col items-center justify-center gap-[0.3125rem]">
-        <span className="h-0.5 w-6 bg-current" />
-        <span className="h-0.5 w-6 bg-current" />
-        <span className="h-0.5 w-6 bg-current" />
+    <div className="xl:hidden">
+      <button
+        type="button"
+        onClick={() => {
+          ref.current?.showModal();
+          setOpen(true);
+        }}
+        aria-label="Deschide meniul"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-controls="meniu-mobil"
+        className="flex size-12 items-center justify-center"
+      >
+        <Icon name="menu" className="size-7" />
       </button>
-      <dialog ref={ref} aria-label="Meniu" onClick={(e) => e.target === ref.current && close()} className="menu on-ink overscroll-contain p-6">
+      <dialog
+        id="meniu-mobil"
+        ref={ref}
+        aria-label="Meniu"
+        onClose={() => setOpen(false)}
+        onClick={(e) => e.target === ref.current && close()}
+        className="menu on-ink overscroll-contain p-6"
+      >
         <form method="dialog" className="flex justify-end">
-          <button aria-label="Închide meniul" className="flex size-12 items-center justify-center text-3xl leading-none">
-            ×
+          <button aria-label="Închide meniul" className="flex size-12 items-center justify-center">
+            <Icon name="close" className="size-7" />
           </button>
         </form>
         <nav aria-label="Meniu mobil">
           <ul className="mt-4 grid">
             {items.map((i, n) => (
               <li key={i.href} style={{ "--i": n } as React.CSSProperties}>
-                <Link href={i.href} onClick={close} className="block border-t border-ink-line py-4 text-2xl font-semibold">
+                <Link href={i.href} onClick={close} aria-current={current(i.href) ? "page" : undefined} className="block border-t border-ink-line py-4 text-2xl font-semibold aria-[current=page]:text-brand">
                   {i.label}
                 </Link>
               </li>

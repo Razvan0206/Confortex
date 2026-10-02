@@ -18,8 +18,9 @@ export function FeaturedRefs() {
             </li>
           ))}
         </ul>
-        <Link href="/proiecte" className="link mt-10 inline-flex min-h-11 items-center gap-2 font-semibold">
-          Toate proiectele de referință <Icon name="arrow" className="size-4" />
+        <p className="muted mt-8 text-sm">Lista provine de pe site-ul anterior; denumirile clienților se confirmă cu clientul înainte de lansare.</p>
+        <Link href="/proiecte" className="link mt-6 inline-flex min-h-11 items-center gap-2 font-semibold">
+          Toate proiectele de referință <Icon name="arrow" className="ico-arrow size-4" />
         </Link>
       </div>
     </section>

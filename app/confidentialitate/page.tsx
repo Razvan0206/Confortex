@@ -24,7 +24,7 @@ export default function Page() {
           </div>
           <div>
             <h2 className="text-xl">Temei, durată, destinatari</h2>
-            <p className="mt-2">Temeiul juridic, durata de păstrare și furnizorul care primește mesajele (serviciul de e-mail) se stabilesc cu firma înainte de lansare. Aici vor veni aceste informații (TODO client).</p>
+            <p className="mt-2">Temeiul juridic, durata de păstrare și furnizorul care primește mesajele (serviciul de e-mail) se stabilesc cu firma înainte de lansare. Aici vor veni aceste informații [de completat de client].</p>
           </div>
           <div>
             <h2 className="text-xl">Drepturile dumneavoastră</h2>

@@ -12,15 +12,15 @@ export function Header() {
         <Link href="/" className="flex min-h-11 shrink-0 items-center" aria-label="Confortex, prima pagină">
           <Logo className="h-8 w-auto" />
         </Link>
-        <nav aria-label="Principal" className="hidden lg:block">
+        <nav aria-label="Principal" className="hidden xl:block">
           <NavLinks items={site.nav} />
         </nav>
         <div className="flex items-center gap-2">
-          <a href={site.phoneHref} className="hidden items-center gap-2 px-2 font-semibold lg:flex" aria-label={`Sună la ${site.phone}`}>
+          <a href={site.phoneHref} className="hidden items-center gap-2 px-2 font-semibold xl:flex" aria-label={`Sună la ${site.phone}`}>
             <Icon name="phone" />
-            <span className="num hidden text-[0.95rem] xl:inline">{site.phone}</span>
+            <span className="num text-[0.95rem]">{site.phone}</span>
           </a>
-          <Link href={site.cta.href} className="btn btn-red hidden lg:inline-flex">
+          <Link href={site.cta.href} className="btn btn-red hidden xl:inline-flex">
             {site.cta.label}
           </Link>
           <MobileMenu items={site.nav} cta={site.cta} phone={site.phone} phoneHref={site.phoneHref} />

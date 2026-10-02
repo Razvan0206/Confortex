@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T00:00:00Z",
+  "title": "Design System: Confortex",
+  "extensions": {
+    "colorMeta": {
+      "brand-red": { "role": "primary", "displayName": "Logo Red", "canonical": "#ff0019", "tonalRamp": ["#330005", "#590009", "#80000f", "#a60014", "#cc0016", "#ff0019", "#ff6676", "#ffcccf"] },
+      "brand-red-ui": { "role": "primary", "displayName": "Signal Red", "canonical": "#d6001a", "tonalRamp": ["#2b0006", "#50000f", "#760013", "#9c0017", "#d6001a", "#f0334a", "#f98f9b", "#fdd6da"] },
+      "brand-red-deep": { "role": "primary", "displayName": "Pressed Red", "canonical": "#b00015", "tonalRamp": ["#240005", "#44000b", "#690010", "#8a0012", "#b00015", "#d93347", "#ee8f9a", "#fad6da"] },
+      "ink": { "role": "neutral", "displayName": "Plant Ink", "canonical": "#14171c", "tonalRamp": ["#0a0c0e", "#14171c", "#1d2229", "#333b45", "#566070", "#8a94a3", "#b4bcc6", "#d9dee4"] },
+      "steel": { "role": "neutral", "displayName": "Steel", "canonical": "#566070", "tonalRamp": ["#1d2229", "#333b45", "#44505e", "#566070", "#6e7989", "#8a94a3", "#b4bcc6", "#d9dee4"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#f3f5f7", "tonalRamp": ["#566070", "#8a94a3", "#b4bcc6", "#d9dee4", "#e6eaee", "#f3f5f7", "#f8f9fb", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero h1, line-masked entrance." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2, the most reused size." },
+      "title": { "displayName": "Title", "purpose": "Tile, service and product h3." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs at 1.0625rem / 1.6." },
+      "label": { "displayName": "Label", "purpose": "Form labels, buttons, phone." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Entrances, reveals, press, hover movement." },
+      { "name": "ease-in-out", "value": "cubic-bezier(0.77, 0, 0.175, 1)", "purpose": "On-screen movement: hero photo wipe, product morph." },
+      { "name": "ease-drawer", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "Mobile menu drawer, 280ms." },
+      { "name": "press", "value": "160ms", "purpose": "Button press scale(0.97) and color changes." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Signal Red CTA, 2px radius, used for Cere ofertă.",
+      "html": "<a class=\"ds-btn-red\" href=\"#\">Cere ofertă</a>",
+      "css": ".ds-btn-red { display:inline-flex; align-items:center; justify-content:center; min-height:3rem; padding:0.625rem 1.5rem; border-radius:2px; background:#d6001a; color:#fff; font-weight:600; line-height:1.2; text-decoration:none; transition:background-color 160ms ease, transform 160ms cubic-bezier(0.23,1,0.32,1); } .ds-btn-red:hover { background:#b00015; } .ds-btn-red:active { transform:scale(0.97); } .ds-btn-red:focus-visible { outline:3px solid #fff; outline-offset:3px; }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Outlined phone action on ink surfaces.",
+      "html": "<a class=\"ds-btn-line\" href=\"#\">+40 232 231 900</a>",
+      "css": ".ds-btn-line { display:inline-flex; align-items:center; justify-content:center; min-height:3rem; padding:0.625rem 1.5rem; border-radius:2px; border:1.5px solid currentColor; background:#14171c; color:#fff; font-weight:600; text-decoration:none; font-variant-numeric:tabular-nums; transition:background-color 160ms ease; } .ds-btn-line:hover { background:#232930; } .ds-btn-line:focus-visible { outline:3px solid #fff; outline-offset:3px; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labelled text field, 48px, 2px radius.",
+      "html": "<div class=\"ds-field\"><label>Nume</label><input type=\"text\" placeholder=\"Nume și prenume\"></div>",
+      "css": ".ds-field { display:grid; gap:0.375rem; } .ds-field label { font-weight:600; font-size:0.95rem; color:#14171c; } .ds-field input { min-height:3rem; padding:0.625rem 0.875rem; border:1.5px solid #8a94a3; border-radius:2px; background:#fff; color:#14171c; font:inherit; font-size:1rem; transition:border-color 140ms ease; } .ds-field input:focus-visible { border-color:#14171c; outline:3px solid #d6001a; outline-offset:0; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "description": "Header link with a red underline drawn on hover, full on the current page.",
+      "html": "<div class=\"ds-nav\"><a class=\"ds-navlink\" href=\"#\" aria-current=\"page\">Produse</a><a class=\"ds-navlink\" href=\"#\">Servicii</a></div>",
+      "css": ".ds-nav { background:#14171c; padding:0 1rem; display:flex; gap:1.5rem; } .ds-navlink { position:relative; display:inline-block; padding:1.2rem 0; color:#fff; font-weight:500; text-decoration:none; } .ds-navlink::after { content:''; position:absolute; left:0; right:0; bottom:0.55rem; height:2px; background:#ff0019; transform:scaleX(0); transform-origin:left; transition:transform 220ms cubic-bezier(0.23,1,0.32,1); } .ds-navlink[aria-current='page']::after, .ds-navlink:hover::after { transform:scaleX(1); }"
+    },
+    {
+      "name": "Hex Badge",
+      "kind": "custom",
+      "refersTo": "hex-badge",
+      "description": "Numbered hexagon, the signature shape, for services.",
+      "html": "<span class=\"ds-hex\">01</span>",
+      "css": ".ds-hex { display:inline-grid; place-items:center; width:3.25rem; height:3.75rem; background:#d6001a; color:#fff; font-size:0.95rem; font-weight:650; font-variant-numeric:tabular-nums; clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }"
+    },
+    {
+      "name": "Hex Note",
+      "kind": "custom",
+      "refersTo": "note",
+      "description": "Fact row with a hexagon bullet; replaces side-stripe borders.",
+      "html": "<div class=\"ds-note\">Din 1992 pe piață</div>",
+      "css": ".ds-note { display:flex; gap:0.75rem; align-items:baseline; background:#fff; color:#14171c; padding:0.75rem 1rem; } .ds-note::before { content:''; flex:none; width:0.6rem; height:0.7rem; background:#ff0019; clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); }"
+    },
+    {
+      "name": "Capacity Axis",
+      "kind": "custom",
+      "description": "Log-scale bar on ink with 2px baseline and ticks.",
+      "html": "<div class=\"ds-axis\"><span class=\"ds-bar\"></span></div>",
+      "css": ".ds-axis { position:relative; height:2.5rem; border-bottom:2px solid #333b45; background:#14171c; } .ds-bar { position:absolute; bottom:-2px; left:20%; width:45%; height:1.25rem; background:#ff0019; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Plant Room Panel",
+    "overview": "A technical supplier's site that reads like a well-labelled control panel: a dark ink frame (header, hero, capacity scale, quote band, footer) around pale working surfaces, one signal red, square corners, hexagon marks and real numbers. The ink frame exists because the client's logo is a white raster; content sits on paper and white. This is a deliberate single-theme deviation, not a dark mode.",
+    "keyCharacteristics": [
+      "One accent (logo red), used for actions, marks and the progress line only.",
+      "Ink bands alternate with paper and white bands.",
+      "Geist only; weight and size carry hierarchy, tabular figures for every number.",
+      "Sharp geometry: 2px controls, 0 elsewhere, hexagon as the single signature shape.",
+      "Flat surfaces, no shadows; depth comes from tonal bands.",
+      "Motion is CSS only and always inside prefers-reduced-motion: no-preference."
+    ],
+    "rules": [
+      { "name": "The One Red Rule", "body": "Red is the only chromatic color. Use Logo Red for marks and Signal Red wherever text or a fill must meet contrast; never use Logo Red as a white-text button fill.", "section": "colors" },
+      { "name": "The Ink Frame Rule", "body": "Anything that shows the logo or opens the page (header, hero, footer) is ink because the logo is white. Content bands are paper or white.", "section": "colors" },
+      { "name": "The Tabular Number Rule", "body": "Every figure uses .num (tabular-nums). Headings use text-wrap: balance, paragraphs text-wrap: pretty.", "section": "typography" },
+      { "name": "The Flat Rule", "body": "Do not add shadows; separate with band color or a hairline.", "section": "elevation" },
+      { "name": "The Only Hexagon Rule", "body": "The hexagon is the sole decorative shape; no circles, pills, blobs or rounded cards.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep logo-bearing surfaces on Plant Ink (#14171c) and content on Paper (#f3f5f7) or White.",
+      "Do use Signal Red (#d6001a) for every white-text fill and red text; Logo Red (#ff0019) for marks and large type on ink.",
+      "Do end every page with the quote band or the action bar so \"Cere ofertă\" and the phone number stay one click away.",
+      "Do draw figures from content/site.ts and set them with .num.",
+      "Do wrap every animation in prefers-reduced-motion: no-preference and keep CSS-only.",
+      "Do mark unconfirmed client claims visibly instead of presenting them as fact."
+    ],
+    "donts": [
+      "Don't add a second accent color, gradients, or shadows.",
+      "Don't round anything beyond the 2px control radius or introduce shapes other than the hexagon.",
+      "Don't add a second typeface, serif, or mono.",
+      "Don't use side-stripe borders for emphasis; use the hexagon note instead.",
+      "Don't add carousels, marquees or animation libraries."
+    ]
+  }
+}

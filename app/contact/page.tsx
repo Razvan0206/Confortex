@@ -23,7 +23,7 @@ export default function Page() {
               </span>
             </p>
             <a href={site.mapsUrl} className="link mt-3 inline-flex min-h-11 items-center gap-2 font-semibold" target="_blank" rel="noopener noreferrer">
-              Deschide în Google Maps <Icon name="arrow" className="size-4" />
+              Deschide în Google Maps <Icon name="arrow" className="ico-arrow size-4" />
             </a>
           </div>
           <div>
@@ -44,7 +44,7 @@ export default function Page() {
           </div>
           <div>
             <h2 className="text-xl">Program</h2>
-            <p className="mt-3">{site.hours ?? "Aici va veni programul de lucru și, dacă există, programul pentru intervenții urgente (TODO client)."}</p>
+            <p className="mt-3">{site.hours ?? "Aici va veni programul de lucru și, dacă există, programul pentru intervenții urgente [de completat de client]."}</p>
           </div>
         </div>
       </section>

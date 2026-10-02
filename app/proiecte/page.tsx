@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <>
       <PageHero title="Proiecte de referință" lead={`Lucrări executate în ${region}. Listă preluată de pe site-ul anterior; denumirile se confirmă cu clientul.`} />
-      <nav aria-label="Domenii de proiecte" className="on-white sticky top-[4.25rem] z-30 border-b border-line">
+      <nav aria-label="Domenii de proiecte" className="on-white z-30 border-b border-line md:sticky md:top-[4.25rem]">
         <ul className="wrap flex gap-x-6 overflow-x-auto py-1 text-[0.95rem] font-medium">
           {referenceGroups.map((g) => (
             <li key={g.id} className="shrink-0">
@@ -26,6 +26,7 @@ export default function Page() {
           </li>
         </ul>
       </nav>
+      <p className="wrap muted pt-8 text-sm">Lista provine de pe site-ul anterior; denumirile clienților se confirmă cu clientul înainte de lansare.</p>
       {referenceGroups.map((g, gi) => (
         <section key={g.id} id={g.id} className={`band ${gi % 2 ? "on-white" : ""}`} aria-labelledby={`${g.id}-title`}>
           <div className="wrap">
