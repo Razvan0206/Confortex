@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { Gallery } from "@/components/Gallery";
 import { PageHero } from "@/components/PageHero";
 import { QuoteBand } from "@/components/QuoteBand";
-import { otherClients, referenceGroups, region } from "@/content/site";
+import { gallery, otherClients, referenceGroups, region } from "@/content/site";
 
 export const metadata: Metadata = { title: "Proiecte de referință", description: "Lucrări de refrigerare, HVAC, chillere și aer comprimat executate de Confortex în Iași și în regiune." };
 
@@ -18,6 +19,11 @@ export default function Page() {
               </a>
             </li>
           ))}
+          <li className="shrink-0">
+            <a href="#fotografii" className="link inline-flex min-h-11 items-center">
+              Fotografii
+            </a>
+          </li>
         </ul>
       </nav>
       {referenceGroups.map((g, gi) => (
@@ -45,6 +51,17 @@ export default function Page() {
             Alți clienți
           </h2>
           <p className="mt-4 max-w-4xl">{otherClients.join(" · ")}</p>
+        </div>
+      </section>
+      <section id="fotografii" className="on-white band" aria-labelledby="photos-title">
+        <div className="wrap">
+          <h2 id="photos-title" className="max-w-3xl text-[clamp(1.7rem,3vw,2.5rem)]">
+            Lucrări în imagini
+          </h2>
+          <p className="muted mt-3 max-w-2xl">Fotografii din lucrările Confortex, preluate de pe site-ul anterior. Apăsați pe o fotografie pentru a o mări.</p>
+          <div className="mt-10">
+            <Gallery groups={gallery} />
+          </div>
         </div>
       </section>
       <QuoteBand />

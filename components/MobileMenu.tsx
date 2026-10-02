@@ -21,8 +21,8 @@ export function MobileMenu({ items, cta, phone, phoneHref }: { items: readonly {
         </form>
         <nav aria-label="Meniu mobil">
           <ul className="mt-4 grid">
-            {items.map((i) => (
-              <li key={i.href}>
+            {items.map((i, n) => (
+              <li key={i.href} style={{ "--i": n } as React.CSSProperties}>
                 <Link href={i.href} onClick={close} className="block border-t border-ink-line py-4 text-2xl font-semibold">
                   {i.label}
                 </Link>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description,
   robots: { index: false, follow: false }, // ponytail: demo is noindex and has no sitemap/robots, upgrade: remove at launch and add app/sitemap.ts + app/robots.ts (guidelines/08)
   openGraph: { title, description, locale: "ro_RO", type: "website", siteName: site.name },
-  twitter: { card: "summary", title, description },
+  twitter: { card: "summary_large_image", title, description },
 };
 
 export const viewport: Viewport = { themeColor: "#14171c" };
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <a href="#main" className="sr-only z-50 bg-white px-4 py-3 font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
           Sari la conținut
         </a>
+        <div className="progress" aria-hidden />
         <Header />
         <main id="main">{children}</main>
         <Footer />

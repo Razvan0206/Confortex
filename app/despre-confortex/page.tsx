@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { BrandsCerts } from "@/components/BrandsCerts";
 import { PageHero } from "@/components/PageHero";
+import { Photo } from "@/components/Photo";
 import { QuoteBand } from "@/components/QuoteBand";
+import { Timeline } from "@/components/Timeline";
 import { about, region, site } from "@/content/site";
 
 export const metadata: Metadata = { title: "Despre noi", description: `Confortex: tehnica frigului industrial, ventilație, aer condiționat și aer comprimat, din ${site.founded}, la Iași.` };
@@ -25,10 +26,11 @@ export default function Page() {
             </p>
           </div>
           <figure className="lg:col-span-6">
-            <Image src={about.image.src} alt={about.image.alt} width={about.image.w} height={about.image.h} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[16/10] w-full object-cover" />
+            <Photo img={about.image} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[16/10] w-full object-cover" />
           </figure>
         </div>
       </section>
+      <Timeline />
       <BrandsCerts />
       <QuoteBand />
     </>

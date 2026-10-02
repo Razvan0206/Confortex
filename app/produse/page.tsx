@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { PageHero } from "@/components/PageHero";
+import { Photo } from "@/components/Photo";
 import { QuoteBand } from "@/components/QuoteBand";
 import { productGroups, products } from "@/content/site";
 
@@ -32,11 +33,14 @@ export default function Page() {
             <ul className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
               {products
                 .filter((p) => p.group === g.id)
-                .map((p) => (
-                  <li key={p.slug}>
+                .map((p, i) => (
+                  <li key={p.slug} className="reveal" style={{ "--i": i % 3 } as React.CSSProperties}>
                     <Link href={`/produse/${p.slug}`} className="group block">
-                      <span className="block bg-white p-3">
-                        <Image src={p.image.src} alt={p.image.alt} width={p.image.w} height={p.image.h} sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="aspect-[16/9] w-full object-contain" />
+                      <span className="zoom block bg-white p-3">
+                        {/* shared element: this photo morphs into the one on the product page */}
+                        <ViewTransition name={`prod-${p.slug}`} share="prod-morph" default="none">
+                          <Photo img={p.image} sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="aspect-[16/9] w-full object-contain" />
+                        </ViewTransition>
                       </span>
                       <span className="mt-4 block text-xl font-semibold leading-tight group-hover:underline">{p.title}</span>
                       {p.brand && <span className="muted mt-1 block text-sm">{p.brand}</span>}

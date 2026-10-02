@@ -7,7 +7,7 @@ const decades = (lo: number, hi: number) => Array.from({ length: Math.round(Math
 
 export function CapacityScale() {
   return (
-    <section className="on-ink band" aria-labelledby="scale-title">
+    <section className="on-ink band cv-off" aria-labelledby="scale-title">
       <div className="wrap">
         <h2 id="scale-title" className="reveal max-w-3xl text-[clamp(1.9rem,3.6vw,3rem)]">
           De la 10 m³ la 11.000 m³, de la 8 kW la 1.000 kW

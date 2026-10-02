@@ -6,8 +6,8 @@ export function ProofStrip() {
     <section aria-label="Repere" className="bg-ink-2 text-white">
       <div className="wrap py-7">
         <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-5">
-          {proof.map((p) => (
-            <li key={p.strong} className="note bg-transparent! p-0!">
+          {proof.map((p, i) => (
+            <li key={p.strong} className="note rise bg-transparent! p-0!" style={{ "--i": i + 5 } as React.CSSProperties}>
               <span>
                 <strong className="font-semibold">{p.strong}</strong> <span className="text-ink-muted">{p.text}</span>
               </span>

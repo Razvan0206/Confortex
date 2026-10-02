@@ -7,7 +7,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const targets = [
   ["/contact", "oferta"],
   ["/produse", "refrigerare"], ["/produse", "depozite"], ["/produse", "hvac"], ["/produse", "frig-adanc"],
-  ["/proiecte", "refrigerare"], ["/proiecte", "hvac"], ["/proiecte", "chillere"], ["/proiecte", "aer-comprimat"],
+  ["/proiecte", "refrigerare"], ["/proiecte", "fotografii"], ["/proiecte", "hvac"], ["/proiecte", "chillere"], ["/proiecte", "aer-comprimat"],
   ["/servicii-confortex", "consultanta"], ["/servicii-confortex", "montaj"], ["/servicii-confortex", "service"], ["/servicii-confortex", "instruire"],
 ];
 
@@ -19,15 +19,17 @@ const targets = [
     await page.setViewport({ width: w, height: h, isMobile: w < 500 });
     console.log(`\n${w}px:`);
     for (const [path, id] of targets) {
+      await page.goto("about:blank"); // fresh load: a same-page hash jump would smooth-scroll from the previous target
       await page.goto(`${BASE}${path}#${id}`, { waitUntil: "networkidle2" });
-      await sleep(900);
+      await sleep(1600); // html has scroll-behavior: smooth
       const r = await page.evaluate((id) => {
         const s = document.getElementById(id);
         if (!s) return null;
         const head = s.querySelector("h2, h3") || s;
         const t = head.getBoundingClientRect().top;
         const header = document.querySelector("header").getBoundingClientRect().bottom;
-        return { t: Math.round(t), header: Math.round(header), ok: t >= header - 1 && t < innerHeight * 0.6 };
+        // 24 px of tolerance: scroll-driven reveals shift content by up to 1.25rem
+        return { t: Math.round(t), header: Math.round(header), ok: t >= header - 24 && t < innerHeight * 0.6 };
       }, id);
       if (!r || !r.ok) bad++;
       console.log(`  ${path}#${id}: ${r ? `headingTop=${r.t} headerBottom=${r.header} ${r.ok ? "OK" : "BAD"}` : "MISSING"}`);

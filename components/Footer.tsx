@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { site } from "@/content/site";
+import { productGroups, site } from "@/content/site";
 import { Icon } from "./Icon";
 import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="on-ink pb-24 pt-14 lg:pb-14">
-      <div className="wrap grid gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+      <div className="wrap grid gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1.2fr_1.2fr]">
         <div>
           <Logo className="h-8 w-auto" />
           <p className="muted mt-5 max-w-sm">Frig industrial și comercial, HVAC și centrale de tratare a aerului. Livrare, montaj, service și instruire.</p>
@@ -31,6 +31,18 @@ export function Footer() {
                 Politica de cookie-uri
               </Link>
             </li>
+          </ul>
+        </nav>
+        <nav aria-label="Categorii de produse">
+          <h2 className="text-base font-semibold tracking-normal">Produse</h2>
+          <ul className="mt-3 grid gap-1">
+            {productGroups.map((g) => (
+              <li key={g.id}>
+                <Link href={`/produse#${g.id}`} className="link muted inline-flex min-h-11 items-center hover:text-white">
+                  {g.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div>
