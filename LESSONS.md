@@ -105,7 +105,6 @@ All CSS, inside `@media (prefers-reduced-motion: no-preference)`, scroll-driven 
 | Project skills (`web-design-guidelines`, `graphify`) | "Unknown skill" until session restart | Read `SKILL.md` and follow it |
 | `impeccable detect <url>` | Returned empty output | Run `detect --json components app` on source after the build |
 | Agent Reach | Does not read Google Maps reviews | Ask the client for an exported reviews file (`06-content-media-ethics.md`) |
-| `ExitPlan`-style confirmation for design | n/a | Writing the identity brief into `CLAUDE.md` and waiting worked |
 | Full-page screenshots with scroll-driven reveals | Content invisible, sections blank | Inject `animation:none` and `content-visibility: visible` for QA only |
 | `content-visibility` on the scale section | False contrast failures | Apply to inner wrappers only, exclude positioned labels |
 
