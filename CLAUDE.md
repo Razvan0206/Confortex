@@ -13,6 +13,7 @@ Niche: **hvac-refrigeration** (B2B; `trades-local-services` base only). Seeded f
 2. `guidelines/niches/hvac-refrigeration.md` (claims tagged verified/unverified).
 3. `guidelines/10-romania-legal-local.md`, `guidelines/11-capability-catalog.md`.
 4. `guidelines/02-tool-routing.md`.
+5. `LESSONS.md` (transferable lessons, checklist for a similar site or another domain).
 
 ## Project decisions
 
